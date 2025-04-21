@@ -1,0 +1,15 @@
+{
+    "ColorBitDepth": 32,
+    "FlagChangeWindowMode": true,
+    "Font": "cinecaption226.ttf",
+    "FontSize": 32,
+    "FragOutApplicationLogValid": true,
+    "RunTimeMin": 17,
+    "Screen": {
+        "height": 720,
+        "width": 1280
+    },
+    "Volume": 32,
+    "WindowSizeExtendRate": 0.6,
+    "WindowTitle": "Thunder Hill"
+}

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{7158c54d-2a5e-4b84-8499-449b62a4b8a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{a41e8567-e8af-4a6a-966d-c30abe2e3840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{75fd214f-622e-4681-b649-f32c55dbbac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{a555594e-02eb-480e-ae05-7d63eee57152}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Core.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="WindowSettingItems.h" />
+    <ClInclude Include="WinMain.h" />
+    <ClInclude Include="Core\Manager\AnimationManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Animation2D.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Camera.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Collisions.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Colors.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Manager\ControllerManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Error.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\FileIO.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Scenes\GameplayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Geometry2D.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Scenes\LogoScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Manager\ObjectManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Scenes\SceneBace.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Manager\SceneManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Manager\ResourceManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Scenes\TitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Sprite2D.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Motion.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\ObjectBace.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\Core.cpp" />
+    <ClCompile Include="WindowSettingItems.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="Core\Manager\AnimationManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Animation2D.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Camera.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Collisions.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Manager\ControllerManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Error.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\FileIO.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Scenes\GameplayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Geometry2D.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Scenes\LogoScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Manager\ObjectManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Scenes\SceneBace.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Manager\ResourceManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Manager\SceneManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Scenes\TitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Sprite2D.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Motion.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Objects\ObjectBace.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.ico">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
