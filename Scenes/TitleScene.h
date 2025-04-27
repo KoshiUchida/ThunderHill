@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/04/21
+ * @date   2025/04/27
  */
 
 #pragma once
@@ -25,7 +25,7 @@ private:
 
 public:
 	// メインシステム
-	TitleScene(WSI* wsi, SceneManager* sceneManager);
+	TitleScene();
 	~TitleScene();
 	void Initialize() override;
 	void Update()     override;

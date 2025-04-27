@@ -19,124 +19,130 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="WindowSettingItems.h" />
     <ClInclude Include="WinMain.h" />
-    <ClInclude Include="Core\Manager\AnimationManager.h">
+    <ClInclude Include="Manager\AnimationManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Animation2D.h">
+    <ClInclude Include="Common\Animation2D.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Camera.h">
+    <ClInclude Include="Common\Camera.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Collisions.h">
+    <ClInclude Include="Common\Collisions.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Colors.h">
+    <ClInclude Include="Common\Colors.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Error.h">
+    <ClInclude Include="Common\Error.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\FileIO.h">
+    <ClInclude Include="Common\FileIO.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Scenes\GameplayScene.h">
+    <ClInclude Include="Scenes\GameplayScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Geometry2D.h">
+    <ClInclude Include="Common\Geometry2D.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Scenes\LogoScene.h">
+    <ClInclude Include="Scenes\LogoScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Manager\ObjectManager.h">
+    <ClInclude Include="Manager\ObjectManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Scenes\SceneBace.h">
+    <ClInclude Include="Scenes\SceneBace.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Manager\SceneManager.h">
+    <ClInclude Include="Manager\SceneManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Manager\ResourceManager.h">
+    <ClInclude Include="Manager\ResourceManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Scenes\TitleScene.h">
+    <ClInclude Include="Scenes\TitleScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Sprite2D.h">
+    <ClInclude Include="Common\Sprite2D.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Motion.h">
+    <ClInclude Include="Common\Motion.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\ObjectBace.h">
+    <ClInclude Include="Objects\ObjectBace.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Manager\Joypad.h" />
-    <ClInclude Include="Core\Manager\ShareData.h" />
+    <ClInclude Include="Manager\Joypad.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\ShareData.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="WindowSettingItems.cpp" />
     <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="Core\Manager\AnimationManager.cpp">
+    <ClCompile Include="Manager\AnimationManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Animation2D.cpp">
+    <ClCompile Include="Common\Animation2D.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Camera.cpp">
+    <ClCompile Include="Common\Camera.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Collisions.cpp">
+    <ClCompile Include="Common\Collisions.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Error.cpp">
+    <ClCompile Include="Common\Error.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\FileIO.cpp">
+    <ClCompile Include="Common\FileIO.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Scenes\GameplayScene.cpp">
+    <ClCompile Include="Scenes\GameplayScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Geometry2D.cpp">
+    <ClCompile Include="Common\Geometry2D.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Scenes\LogoScene.cpp">
+    <ClCompile Include="Scenes\LogoScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Manager\ObjectManager.cpp">
+    <ClCompile Include="Manager\ObjectManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Scenes\SceneBace.cpp">
+    <ClCompile Include="Scenes\SceneBace.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Manager\ResourceManager.cpp">
+    <ClCompile Include="Manager\ResourceManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Manager\SceneManager.cpp">
+    <ClCompile Include="Manager\SceneManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Scenes\TitleScene.cpp">
+    <ClCompile Include="Scenes\TitleScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Sprite2D.cpp">
+    <ClCompile Include="Common\Sprite2D.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Motion.cpp">
+    <ClCompile Include="Common\Motion.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Objects\ObjectBace.cpp">
+    <ClCompile Include="Objects\ObjectBace.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Manager\Joypad.cpp" />
-    <ClCompile Include="Core\Manager\ShareData.cpp" />
+    <ClCompile Include="Manager\Joypad.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\ShareData.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">

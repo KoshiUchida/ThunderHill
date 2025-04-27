@@ -11,7 +11,7 @@
 #include "GameplayScene.h"
 
 #include <DxLib.h>
-#include "../../WindowSettingItems.h"
+#include "../WindowSettingItems.h"
 #include "../Common/Colors.h"
 
 #include "../Common/Collisions.h"
@@ -21,8 +21,9 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-GameplayScene::GameplayScene(WSI* wsi, SceneManager* sceneManager)
-	: SceneBace(wsi, sceneManager)
+GameplayScene::GameplayScene()
+	: SceneBace()
+	, m_FontSize{}
 {
 }
 
@@ -37,7 +38,8 @@ GameplayScene::~GameplayScene() noexcept = default;
 void GameplayScene::Initialize()
 {
 	// Font Size
-	SetFontSize(mp_wsi->FontSize);
+	m_FontSize = p_wsi->GetWindowSetting().FontSize;
+	SetFontSize(m_FontSize);
 
 	// Object Initialize
 	m_ObjectManager.Initialize();
@@ -61,7 +63,7 @@ void GameplayScene::Render()
 	m_ObjectManager.Render(m_camera);
 
 #if defined(_DEBUG)
-	DrawString(mp_wsi->ScreenRight - mp_wsi->FontSize * 13, mp_wsi->ScreenBotton - mp_wsi->FontSize * 2, "GameplayScene", Colors::Cyan);
+	DrawString(p_wsi->ScreenRight() - m_FontSize * 13, p_wsi->ScreenBottom() - m_FontSize * 2, "GameplayScene", Colors::Cyan);
 #endif
 }
 

@@ -5,14 +5,14 @@
  *
  * @author CatCode
  *
- * @date   2025/02/10
+ * @date   2025/04/27
  */
 
 #include "LogoScene.h"
 
 #include <DxLib.h>
 #include "../Manager/ResourceManager.h"
-#include "../../WindowSettingItems.h"
+#include "../WindowSettingItems.h"
 #include "../Common/Sprite2D.h"
 #include "../Manager/Joypad.h"
 
@@ -21,8 +21,8 @@ using namespace std;
 /// <summary>
 /// コンストラク
 /// </summary>
-LogoScene::LogoScene(WSI* wsi, SceneManager* sceneManager)
-	: SceneBace(wsi, sceneManager)
+LogoScene::LogoScene()
+	: SceneBace()
 	, ms_Logo{ nullptr }
 	, m_Time{}
 	, m_LogoAlpha{}
@@ -40,7 +40,7 @@ void LogoScene::Initialize()
 	ResourceManager& rm{ ResourceManager::GetInstance() };
 
 	ms_Logo = std::make_unique<Sprite2D>(rm.RequestTexture("Logo.png"), 0.2f);
-	ms_Logo->Initialize(Transform2D(Position2D(static_cast<float>(mp_wsi->ScreenCenterX), static_cast<float>(mp_wsi->ScreenCenterY)), 0.f));
+	ms_Logo->Initialize(Transform2D(Position2D(static_cast<float>(p_wsi->ScreenCenterX()), static_cast<float>(p_wsi->ScreenCenterY())), 0.f));
 	
 	m_Time      = 0;
 	m_LogoAlpha = 0;

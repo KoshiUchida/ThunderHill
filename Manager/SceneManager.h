@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2024/11/03
+ * @date   2025/04/27
  */
 
 #pragma once
@@ -18,8 +18,16 @@ class SceneBace;
 /// <summary>
 /// シーン管理クラス
 /// </summary>
-class SceneManager
+class SceneManager final
 {
+private:
+	static std::unique_ptr<SceneManager> s_SceneManager;
+
+public:
+	static SceneManager& GetInstance();
+
+	void Clear();
+
 private:
 	// エイリアス宣言
 	using SceneCollection = std::unordered_map<std::string, std::unique_ptr<SceneBace>>;
@@ -35,18 +43,13 @@ private:
 	// 終了命令
 	bool m_IsEnd;
 
-public:
 	/*メインシステム*/
 	SceneManager();
+
+public:
 	~SceneManager();
 	void Update();
 	void Render();
-
-	// シーンの登録
-	void addScene(const std::string& sceneName, std::unique_ptr<SceneBace> scene);
-
-	// 起動時のシーンの設定
-	void SetStartScene(const std::string& startSceneName);
 
 	// シーン変更の要求
 	void RequestSceneChange(const std::string& changeSceneName);
@@ -56,6 +59,12 @@ public:
 	bool isEnd() const { return m_IsEnd; }
 
 private:
+	// シーンの登録
+	void SetScene();
+
+	// 起動時のシーンの設定
+	void SetStartScene(const std::string& startSceneName);
+
 	// シーンの変更
 	void ChangeScene();
 

@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/12
+ * @date   2025/04/27
  */
 
 #pragma once
@@ -13,8 +13,8 @@
 #include <string>
 #include "../Common/Camera.h"
 #include "../Manager/ObjectManager.h"
+#include "../WindowSettingItems.h"
 
-class WSI;
 class SceneManager;
 
 /// <summary>
@@ -27,17 +27,17 @@ protected:
 	Camera m_camera;
 
 	// ウインドウの設定へのポインタ
-	WSI* mp_wsi;
+	WSI* p_wsi;
 
 	// シーンマネージャへのポインタ
-	SceneManager* mp_SceneManager;
+	SceneManager* p_SceneManager;
 
 	// オブジェクトマネージャへのポインタ
 	ObjectManager m_ObjectManager;
 
 public:
 	/*メインシステム*/
-	SceneBace(WSI* pWSI, SceneManager* pSceneManager, Position2D cameraPosition = Position2D(0.f, 0.f));
+	SceneBace(Position2D cameraPosition = Position2D(0.f, 0.f));
 	virtual ~SceneBace() = default;
 	virtual void Initialize() = 0;
 	virtual void Update()     = 0;

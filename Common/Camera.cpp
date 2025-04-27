@@ -10,6 +10,8 @@
 
 #include "Camera.h"
 
+Camera::Camera() = default;
+
 /// <summary>
 /// Constractor
 /// </summary>

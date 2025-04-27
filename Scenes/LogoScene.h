@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/12
+ * @date   2025/04/27
  */
 
 #pragma once
@@ -36,7 +36,7 @@ private:
 
 public:
 	// メインシステム
-	LogoScene(WSI* wsi, SceneManager* sceneManager);
+	LogoScene();
 	~LogoScene();
 	void Initialize() override;
 	void Update()     override;

@@ -5,12 +5,11 @@
  *
  * @author CatCode
  *
- * @date   2025/01/12
+ * @date   2025/04/27
  */
 
 #include "SceneBace.h"
 
-#include "../../WindowSettingItems.h"
 #include "../Manager/SceneManager.h"
 #include "../Manager/ResourceManager.h"
 
@@ -20,11 +19,11 @@
 /// <param name="pSceneManager">シーンマネージャへのポインタ</param>
 /// <param name="pResourceManager">リソースマネージャへのポインタ</param>
 /// <param name="pControllerManager">コントローラマネージャへのポインタ</param>
-SceneBace::SceneBace(WSI* pWSI, SceneManager* pSceneManager,  Position2D cameraPosition)
-	: mp_wsi              { pWSI }
-	, mp_SceneManager     { pSceneManager }
-	, m_camera            { cameraPosition, pWSI->ScreenWidth, pWSI->ScreenHeight }
+SceneBace::SceneBace(Position2D cameraPosition)
+	: p_wsi              { &WSI::GetInstance()}
+	, p_SceneManager     { &SceneManager::GetInstance()}
 {
+	m_camera = Camera(cameraPosition, p_wsi->ScreenRight(), p_wsi->ScreenBottom());
 }
 
 /// <summary>
@@ -33,5 +32,5 @@ SceneBace::SceneBace(WSI* pWSI, SceneManager* pSceneManager,  Position2D cameraP
 /// <param name="nextSceneName">変更先のシーン名</param>
 void SceneBace::ChangeScene(const std::string& nextSceneName)
 {
-	mp_SceneManager->RequestSceneChange(nextSceneName);
+	p_SceneManager->RequestSceneChange(nextSceneName);
 }

@@ -32,7 +32,7 @@ public:
 	// 実体の取得関数
 	static Joypad& GetInstance();
 
-	void Clear();
+	void Clear() noexcept;
 
 private:
 	// 入力状態
@@ -48,28 +48,28 @@ private:
 	short m_VirtualThumbLY;
 
 
-	Joypad();
+	Joypad() noexcept;
 
 public:
-	~Joypad();
+	~Joypad() noexcept;
 
-	void Update();
+	void Update() noexcept;
 
 private:
-	void UpdateVirtualStick();
-	WORD GetVirtualButtons() const;
+	void UpdateVirtualStick() noexcept;
+	WORD GetVirtualButtons() const noexcept;
 
 public:
 	// 入力判定
-	bool IsPressed (WORD button) const;
-	bool IsReleased(WORD button) const;
-	bool IsHeld    (WORD button) const;
+	bool IsPressed (WORD button) const noexcept;
+	bool IsReleased(WORD button) const noexcept;
+	bool IsHeld    (WORD button) const noexcept;
 
 	// スティック取得
-	short GetLeftThumbLX() const;
-	short GetLeftThumbLY() const;
+	short GetLeftThumbLX() const noexcept;
+	short GetLeftThumbLY() const noexcept;
 
-	float GetLeftThumbLXPercent() const;
-	float GetLeftThumbLYPercent() const;
+	float GetLeftThumbLXPercent() const noexcept;
+	float GetLeftThumbLYPercent() const noexcept;
 };
 

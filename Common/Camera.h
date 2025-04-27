@@ -30,6 +30,7 @@ private:
 
 public:
 	/*Main System*/
+	Camera();
 	Camera(Position2D position, int screenWidth, int screenHeight);
 	~Camera();
 

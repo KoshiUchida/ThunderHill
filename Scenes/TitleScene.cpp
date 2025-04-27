@@ -5,13 +5,13 @@
  *
  * @author CatCode
  *
- * @date   2025/04/21
+ * @date   2025/04/27
  */
 
 #include "TitleScene.h"
 
 #include <DxLib.h>
-#include "../../WindowSettingItems.h"
+#include "../WindowSettingItems.h"
 
 #include "../Manager/ObjectManager.h"
 #include "../Manager/ResourceManager.h"
@@ -22,8 +22,8 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-TitleScene::TitleScene(WSI* wsi, SceneManager* sceneManager)
-	: SceneBace(wsi, sceneManager)
+TitleScene::TitleScene()
+	: SceneBace()
 {
 }
 

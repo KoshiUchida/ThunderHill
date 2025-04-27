@@ -14,7 +14,7 @@ Joypad& Joypad::GetInstance()
 	return *s_Joypad.get();
 }
 
-void Joypad::Clear()
+void Joypad::Clear() noexcept
 {
 	memset(&m_PreviousState, 0, sizeof(XINPUT_STATE));
 	memset(&m_CurrentState , 0, sizeof(XINPUT_STATE));
@@ -25,11 +25,11 @@ void Joypad::Clear()
 	m_VirtualThumbLY = 0;
 }
 
-Joypad::Joypad() = default;
+Joypad::Joypad() noexcept = default;
 
-Joypad::~Joypad() = default;
+Joypad::~Joypad() noexcept = default;
 
-void Joypad::Update()
+void Joypad::Update() noexcept
 {
 	m_PreviousState = m_CurrentState;
 
@@ -43,7 +43,7 @@ void Joypad::Update()
 		UpdateVirtualStick();
 }
 
-void Joypad::UpdateVirtualStick()
+void Joypad::UpdateVirtualStick() noexcept
 {
 	m_VirtualThumbLX = 0;
 	m_VirtualThumbLY = 0;
@@ -65,7 +65,7 @@ void Joypad::UpdateVirtualStick()
 		m_VirtualThumbLY = -32767;
 }
 
-WORD Joypad::GetVirtualButtons() const
+WORD Joypad::GetVirtualButtons() const noexcept
 {
 	WORD buttons = 0;
 
@@ -81,7 +81,7 @@ WORD Joypad::GetVirtualButtons() const
 	return buttons;
 }
 
-bool Joypad::IsPressed(WORD button) const
+bool Joypad::IsPressed(WORD button) const noexcept
 {
 	if (m_IsConnected)
 		return (m_CurrentState.Gamepad.wButtons & button) && !(m_PreviousState.Gamepad.wButtons & button);
@@ -95,7 +95,7 @@ bool Joypad::IsPressed(WORD button) const
 	return false;
 }
 
-bool Joypad::IsReleased(WORD button) const
+bool Joypad::IsReleased(WORD button) const noexcept
 {
 	if (m_IsConnected)
 	{
@@ -109,7 +109,7 @@ bool Joypad::IsReleased(WORD button) const
 	return false;
 }
 
-bool Joypad::IsHeld(WORD button) const
+bool Joypad::IsHeld(WORD button) const noexcept
 {
 	if (m_IsConnected)
 		return (m_CurrentState.Gamepad.wButtons & button);
@@ -123,22 +123,22 @@ bool Joypad::IsHeld(WORD button) const
 	return false;
 }
 
-short Joypad::GetLeftThumbLX() const
+short Joypad::GetLeftThumbLX() const noexcept
 {
 	return m_IsConnected ? m_CurrentState.Gamepad.sThumbLX : m_VirtualThumbLX;
 }
 
-short Joypad::GetLeftThumbLY() const
+short Joypad::GetLeftThumbLY() const noexcept
 {
 	return m_IsConnected ? m_CurrentState.Gamepad.sThumbLY : m_VirtualThumbLY;
 }
 
-float Joypad::GetLeftThumbLXPercent() const
+float Joypad::GetLeftThumbLXPercent() const noexcept
 {
 	return static_cast<float>(GetLeftThumbLX()) / 32767.0f;
 }
 
-float Joypad::GetLeftThumbLYPercent() const
+float Joypad::GetLeftThumbLYPercent() const noexcept
 {
 	return static_cast<float>(GetLeftThumbLY()) / 32767.0f;
 }

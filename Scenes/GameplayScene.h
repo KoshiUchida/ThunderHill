@@ -4,8 +4,7 @@
  * @brief  ゲームプレイシーンのヘッダファイル
  *
  * @author CatCode
- *
- * @date   2025/04/21
+ * @date   2025/04/27
  */
 
 #pragma once
@@ -18,9 +17,11 @@
 class GameplayScene
 	: public SceneBace
 {
+private:
+	int m_FontSize;
 public:
 	// Main System
-	GameplayScene(WSI* wsi, SceneManager* sceneManager);
+	GameplayScene();
 	~GameplayScene() noexcept;
 	void Initialize() override final;
 	void Update()     override final;

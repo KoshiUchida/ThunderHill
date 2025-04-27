@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2024/11/03
+ * @date   2024/04/27
  */
 
 #include "SceneManager.h"
@@ -13,14 +13,32 @@
 #include "../Scenes/SceneBace.h"
 #include "../Common/Error.h"
 
-// コンストラクタ
-SceneManager::SceneManager()
-	: m_pCurrentScene  { nullptr }
-	, m_pRequestedScene{ nullptr }
-	, m_scenes         {}
-	, m_IsEnd          {}
+#include "../Scenes/TitleScene.h"
+#include "../Scenes/GameplayScene.h"
+#include "../Scenes/LogoScene.h"
+
+std::unique_ptr<SceneManager> SceneManager::s_SceneManager = nullptr;
+
+SceneManager& SceneManager::GetInstance()
 {
+	if (!s_SceneManager)
+	{
+		s_SceneManager.reset(new SceneManager());
+		s_SceneManager->Clear();
+		s_SceneManager->SetScene();
+	}
+
+	return *s_SceneManager.get();
 }
+
+void SceneManager::Clear()
+{
+	m_pCurrentScene = nullptr;
+	m_pRequestedScene = nullptr;
+	m_IsEnd = false;
+}
+
+SceneManager::SceneManager() = default;
 
 /// <summary>
 /// デストラクタ
@@ -60,11 +78,18 @@ void SceneManager::Render()
 /// <summary>
 /// シーンの登録
 /// </summary>
-/// <param name="sceneName">シーンの登録名</param>
-/// <param name="scene">登録シーン</param>
-void SceneManager::addScene(const std::string& sceneName, std::unique_ptr<SceneBace> scene)
+void SceneManager::SetScene()
 {
-	m_scenes.emplace(sceneName, std::move(scene));
+	m_scenes.emplace("Logo"    , std::make_unique<LogoScene>());
+	m_scenes.emplace("Title"   , std::make_unique<TitleScene>());
+	m_scenes.emplace("Gameplay", std::make_unique<GameplayScene>());
+
+	// 開始シーンの設定
+#if defined(_DEBUG)
+	SetStartScene("Gameplay");
+#else
+	SetStartScene("Logo");
+#endif
 }
 
 /// <summary>

@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/23
+ * @date   2025/04/27
  */
 
 #include "WinMain.h"
@@ -15,8 +15,8 @@
 #include <WinBase.h>
 #include <time.h>
 #include "WindowSettingItems.h"
-#include "Core/Core.h"
-#include "Core/Manager/Joypad.h"
+#include "Manager/Joypad.h"
+#include "Manager/SceneManager.h"
 
 /// <summary>
 /// メインコード
@@ -26,13 +26,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 {
 	/*初期化処理*/
     // ウィンドウのデフォルト設定
-    WSI wsi{ "WindowSettings.wss" };
-    SetMainWindowText(wsi.WindowTitle.c_str());
-    ChangeWindowMode(wsi.FragChangeWindowMode);
-    SetGraphMode(wsi.ScreenWidth, wsi.ScreenHeight, wsi.ColorBitDepth);
-    SetOutApplicationLogValidFlag(wsi.FragOutApplicationLogValid);
-    SetFontSize(wsi.FontSize);
-    SetWindowSizeExtendRate(wsi.WindowSizeExtendRate);
+    WindowSettings wss = WSI::GetInstance().GetWindowSetting();
+    SetMainWindowText(wss.WindowTitle.c_str());
+    ChangeWindowMode(wss.FragChangeWindowMode);
+    SetGraphMode(wss.Screen.width, wss.Screen.height, wss.ColorBitDepth);
+    SetOutApplicationLogValidFlag(wss.FragOutApplicationLogValid);
+    SetFontSize(wss.FontSize);
+    SetWindowSizeExtendRate(wss.WindowSizeExtendRate);
     SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
     SetWindowIconID(IDI_ICON1);
 
@@ -49,12 +49,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
     // ジョイパッドのインスタンスを取得
     Joypad& joypad = Joypad::GetInstance();
+    SceneManager& scene = SceneManager::GetInstance();
 
-    // コアの生成と初期化
-    Core m_core{ &wsi };
-    m_core.Initialize();
-
-    while (ProcessMessage() == 0 && !PressedEndKey() && !m_core.isEnd())
+    while (ProcessMessage() == 0 && !PressedEndKey() && !scene.isEnd())
     {
 
         //処理時間の計測開始
@@ -67,10 +64,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
         /*更新処理*/
         joypad.Update();
-        m_core.Update();
+        scene.Update();
 
         /*描画処理*/
-        m_core.Render();
+        scene.Render();
 
         // 処理時間の計測終了
         int RunTime = GetNowCount() - StartTime;
@@ -78,19 +75,18 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 #if defined(_DEBUG)
         // RunTime の表示
-        DrawFormatString(wsi.ScreenRight - 100, wsi.ScreenBotton - 50, GetColor(255, 0, 0), "%dFPS", ((wsi.RunTimeMin - RunTime > 0) ? (1000 / wsi.RunTimeMin) : (1000 / RunTime)));
+        DrawFormatString(wss.Screen.width - 100, wss.Screen.height - 50, GetColor(255, 0, 0), "%dFPS", ((wss.RunTimeMin - RunTime > 0) ? (1000 / wss.RunTimeMin) : (1000 / RunTime)));
 #endif
 
         //裏画面を表画面にコピー
         ScreenFlip();
 
         // ランタイムの制御
-        if (wsi.RunTimeMin - RunTime > 0)
-            WaitTimer(wsi.RunTimeMin - RunTime);
+        if (wss.RunTimeMin - RunTime > 0)
+            WaitTimer(wss.RunTimeMin - RunTime);
     }
 
     /*終了処理*/
-    m_core.Finalize();
 
     // ウィンドウの破棄
     DxLib::DxLib_End();
