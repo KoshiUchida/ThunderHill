@@ -12,7 +12,6 @@
 
 #include <string>
 #include "../Common/Camera.h"
-#include "../Manager/ObjectManager.h"
 #include "../WindowSettingItems.h"
 
 class SceneManager;
@@ -32,9 +31,6 @@ protected:
 	// シーンマネージャへのポインタ
 	SceneManager* p_SceneManager;
 
-	// オブジェクトマネージャへのポインタ
-	ObjectManager m_ObjectManager;
-
 public:
 	/*メインシステム*/
 	SceneBace(Position2D cameraPosition = Position2D(0.f, 0.f));
@@ -43,6 +39,8 @@ public:
 	virtual void Update()     = 0;
 	virtual void Render()     = 0;
 	virtual void Finalize()   = 0;
+
+	Camera& GetCamera();
 
 protected:
 	/*内部実装*/

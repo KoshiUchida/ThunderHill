@@ -62,7 +62,10 @@ void SceneManager::Update()
 
 	// 現在のシーンを更新
 	if (m_pCurrentScene)
+	{
+		p_ObjectManager->Update();
 		m_pCurrentScene->Update();
+	}
 }
 
 /// <summary>
@@ -72,7 +75,10 @@ void SceneManager::Render()
 {
 	// 現在のシーンを描画
 	if (m_pCurrentScene)
+	{
 		m_pCurrentScene->Render();
+		p_ObjectManager->Render(m_pCurrentScene->GetCamera());
+	}
 }
 
 /// <summary>
@@ -80,6 +86,8 @@ void SceneManager::Render()
 /// </summary>
 void SceneManager::SetScene()
 {
+	p_ObjectManager = &ObjectManager::GetInstance();
+
 	m_scenes.emplace("Logo"    , std::make_unique<LogoScene>());
 	m_scenes.emplace("Title"   , std::make_unique<TitleScene>());
 	m_scenes.emplace("Gameplay", std::make_unique<GameplayScene>());
@@ -131,13 +139,17 @@ void SceneManager::ChangeScene()
 		return;
 
 	if (m_pCurrentScene)
+	{
+		p_ObjectManager->Finalize();
 		m_pCurrentScene->Finalize();
+	}
 
 	if (m_IsEnd)
 		return;
 
 	m_pCurrentScene = m_pRequestedScene;
 	m_pCurrentScene->Initialize();
+	p_ObjectManager->Initialize();
 
 	m_pRequestedScene = nullptr;
 }

@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <string>
 #include <memory>
+#include "ObjectManager.h"
 
 class SceneBace;
 
@@ -42,6 +43,9 @@ private:
 
 	// 終了命令
 	bool m_IsEnd;
+
+	// ゲームマネージャへのポインタ
+	ObjectManager* p_ObjectManager;
 
 	/*メインシステム*/
 	SceneManager();

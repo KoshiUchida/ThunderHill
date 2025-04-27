@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/12
+ * @date   2025/04/27
  */
 
 #pragma once
@@ -28,6 +28,11 @@ class ObjectManager
 	* できる限り、オブジェクトの追加は初期化処理の前に行うこと
 	*/
 private:
+	static std::unique_ptr<ObjectManager> s_ObjectManager;
+
+public:
+	static ObjectManager& GetInstance();
+
 	// エイリアス宣言
 	using ObjectCollection = std::unordered_map<std::string, std::unique_ptr<ObjectBace>>;
 
@@ -37,9 +42,9 @@ private:
 	// レイヤーの最大優先度
 	int m_MaxLayer;
 
-public:
 	/*メインシステム*/
 	ObjectManager();
+public:
 	~ObjectManager();
 	void Initialize();
 	void Update();

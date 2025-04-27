@@ -13,7 +13,6 @@
 #include <DxLib.h>
 #include "../WindowSettingItems.h"
 
-#include "../Manager/ObjectManager.h"
 #include "../Manager/ResourceManager.h"
 #include "../Common/Colors.h"
 
@@ -38,8 +37,6 @@ TitleScene::~TitleScene() = default;
 void TitleScene::Initialize()
 {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
-
-	m_ObjectManager.Initialize();
 }
 
 /// <summary>
@@ -47,7 +44,6 @@ void TitleScene::Initialize()
 /// </summary>
 void TitleScene::Update()
 {
-	m_ObjectManager.Update();
 }
 
 /// <summary>
@@ -55,7 +51,6 @@ void TitleScene::Update()
 /// </summary>
 void TitleScene::Render()
 {
-	m_ObjectManager.Render(m_camera);
 }
 
 /// <summary>
@@ -63,5 +58,4 @@ void TitleScene::Render()
 /// </summary>
 void TitleScene::Finalize()
 {
-	m_ObjectManager.Finalize();
 }

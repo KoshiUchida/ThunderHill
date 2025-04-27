@@ -40,9 +40,6 @@ void GameplayScene::Initialize()
 	// Font Size
 	m_FontSize = p_wsi->GetWindowSetting().FontSize;
 	SetFontSize(m_FontSize);
-
-	// Object Initialize
-	m_ObjectManager.Initialize();
 }
 
 /// <summary>
@@ -50,7 +47,6 @@ void GameplayScene::Initialize()
 /// </summary>
 void GameplayScene::Update()
 {
-	m_ObjectManager.Update();
 }
 
 /// <summary>
@@ -59,8 +55,6 @@ void GameplayScene::Update()
 void GameplayScene::Render()
 {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
-
-	m_ObjectManager.Render(m_camera);
 
 #if defined(_DEBUG)
 	DrawString(p_wsi->ScreenRight() - m_FontSize * 13, p_wsi->ScreenBottom() - m_FontSize * 2, "GameplayScene", Colors::Cyan);
@@ -72,5 +66,4 @@ void GameplayScene::Render()
 /// </summary>
 void GameplayScene::Finalize()
 {
-	m_ObjectManager.Finalize();
 }

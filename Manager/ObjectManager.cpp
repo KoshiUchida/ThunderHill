@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/13
+ * @date   2025/04/27
  */
 
 #include "ObjectManager.h"
@@ -16,6 +16,16 @@
 #include "../Common/Error.h"
 
 #include <vector>
+
+std::unique_ptr<ObjectManager> ObjectManager::s_ObjectManager = nullptr;
+
+ObjectManager& ObjectManager::GetInstance()
+{
+	if (!s_ObjectManager)
+		s_ObjectManager.reset(new ObjectManager);
+
+	return *s_ObjectManager.get();
+}
 
 /// <summary>
 /// Constructor
@@ -30,10 +40,7 @@ ObjectManager::ObjectManager()
 /// </summary>
 ObjectManager::~ObjectManager()
 {
-	for (auto& element : m_Objects)
-		element.second->Finalize();
-
-	m_Objects.clear();
+	Finalize();
 }
 
 /// <summary>

@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/12
+ * @date   2025/04/27
  */
 
 #include "ObjectBace.h"
@@ -20,7 +20,6 @@ ObjectBace::ObjectBace(const Transform2D& _transform, int _layer, const std::str
 	, m_Layer    { _layer }
 	, m_IsDestroy{}
 	, m_Tag      { _tag }
-	, m_ShareData1{}
 {
 }
 

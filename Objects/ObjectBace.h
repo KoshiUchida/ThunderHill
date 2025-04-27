@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/12
+ * @date   2025/04/27
  */
 
 #pragma once
@@ -29,8 +29,6 @@ protected:
 
 	std::string m_Tag;
 
-	int m_ShareData1;
-
 public:
 	/*Main System*/
 	ObjectBace(const Transform2D& _transform, int _layer = 5, const std::string& _tag = "None");
@@ -40,9 +38,6 @@ public:
 	virtual void Render(const Camera& camera) = 0;
 	virtual void Finalize()                   = 0;
 
-	/*Setter*/
-	void SetShareData1(int data) { m_ShareData1 = data; }
-
 	/*Getter*/
 	Position2D GetPosition() const { return m_Transform.GetPosition(); }
 	Position2D GetPosition(const Camera& camera);
@@ -50,8 +45,6 @@ public:
 	bool       isDestroy()   const { return m_IsDestroy; }
 	bool*      GetIsDestroyPointer() { return &m_IsDestroy; }
 	std::string GetTag()     const { return m_Tag; }
-	int GetShareData1()      const { return m_ShareData1; }
-	int* GetShareData1Pointer() { return &m_ShareData1; }
 
 	/*Operator*/
 	ObjectBace& operator+=(const Position2D& other);

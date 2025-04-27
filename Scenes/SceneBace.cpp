@@ -26,6 +26,11 @@ SceneBace::SceneBace(Position2D cameraPosition)
 	m_camera = Camera(cameraPosition, p_wsi->ScreenRight(), p_wsi->ScreenBottom());
 }
 
+Camera& SceneBace::GetCamera()
+{
+	return m_camera;
+}
+
 /// <summary>
 /// ƒV[ƒ“‚Ì•ÏX
 /// </summary>
