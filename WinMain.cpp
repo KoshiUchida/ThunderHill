@@ -16,6 +16,7 @@
 #include <time.h>
 #include "WindowSettingItems.h"
 #include "Core/Core.h"
+#include "Core/Manager/Joypad.h"
 
 /// <summary>
 /// メインコード
@@ -46,6 +47,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
     // シード値を設定
     srand(static_cast<unsigned int>(time(NULL)));
 
+    // ジョイパッドのインスタンスを取得
+    Joypad& joypad = Joypad::GetInstance();
+
     // コアの生成と初期化
     Core m_core{ &wsi };
     m_core.Initialize();
@@ -62,6 +66,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
         SetDrawScreen(DX_SCREEN_BACK);
 
         /*更新処理*/
+        joypad.Update();
         m_core.Update();
 
         /*描画処理*/
@@ -95,9 +100,5 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 bool PressedEndKey()
 {
-    // 以下ふたつのキーが押されていない限り次に進まない
-    if (!CheckHitKey(KEY_INPUT_LCONTROL) || !CheckHitKey(KEY_INPUT_LSHIFT))
-        return false;
-
-    return CheckHitKey(KEY_INPUT_E);
+    return (GetKeyState(VK_ESCAPE) & 0x8000);
 }

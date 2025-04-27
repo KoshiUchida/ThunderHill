@@ -21,15 +21,15 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-GameplayScene::GameplayScene(WSI* wsi, SceneManager* sceneManager, ControllerManager* contorollerManager)
-	: SceneBace(wsi, sceneManager, contorollerManager)
+GameplayScene::GameplayScene(WSI* wsi, SceneManager* sceneManager)
+	: SceneBace(wsi, sceneManager)
 {
 }
 
 /// <summary>
 /// Destructor
 /// </summary>
-GameplayScene::~GameplayScene() = default;
+GameplayScene::~GameplayScene() noexcept = default;
 
 /// <summary>
 /// ‰Šú‰»ˆ—

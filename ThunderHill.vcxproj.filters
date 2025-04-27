@@ -38,9 +38,6 @@
     <ClInclude Include="Core\Common\Colors.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Manager\ControllerManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Common\Error.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -80,6 +77,8 @@
     <ClInclude Include="Core\Objects\ObjectBace.h">
       <Filter>Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Manager\Joypad.h" />
+    <ClInclude Include="Core\Manager\ShareData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp" />
@@ -96,9 +95,6 @@
     </ClCompile>
     <ClCompile Include="Core\Common\Collisions.cpp">
       <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Manager\ControllerManager.cpp">
-      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Core\Common\Error.cpp">
       <Filter>Common</Filter>
@@ -139,6 +135,8 @@
     <ClCompile Include="Core\Objects\ObjectBace.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Manager\Joypad.cpp" />
+    <ClCompile Include="Core\Manager\ShareData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">

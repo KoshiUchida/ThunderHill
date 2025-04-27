@@ -22,8 +22,8 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-TitleScene::TitleScene(WSI* wsi, SceneManager* sceneManager, ControllerManager* contorollerManager)
-	: SceneBace(wsi, sceneManager, contorollerManager)
+TitleScene::TitleScene(WSI* wsi, SceneManager* sceneManager)
+	: SceneBace(wsi, sceneManager)
 {
 }
 

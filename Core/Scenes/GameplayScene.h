@@ -20,11 +20,11 @@ class GameplayScene
 {
 public:
 	// Main System
-	GameplayScene(WSI* wsi, SceneManager* sceneManager, ControllerManager* contorollerManager);
-	~GameplayScene();
-	void Initialize() override;
-	void Update()     override;
-	void Render()     override;
-	void Finalize()   override;
+	GameplayScene(WSI* wsi, SceneManager* sceneManager);
+	~GameplayScene() noexcept;
+	void Initialize() override final;
+	void Update()     override final;
+	void Render()     override final;
+	void Finalize()   override final;
 };
 

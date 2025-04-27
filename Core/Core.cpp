@@ -11,7 +11,6 @@
 #include "Core.h"
 
 #include "../WindowSettingItems.h"
-#include "Manager/ControllerManager.h"
 #include "Manager/SceneManager.h"
 
 #include "Scenes/TitleScene.h"
@@ -23,8 +22,7 @@
 /// </summary>
 Core::Core(WSI* pWSI)
 	: mp_wsi{ pWSI }
-	, m_sceneManager     { nullptr }
-	, m_controllerManager{ nullptr }
+	, m_sceneManager{ nullptr }
 	, m_IsEnd{}
 {
 }
@@ -41,12 +39,11 @@ void Core::Initialize()
 {
 	// マネージャの生成
 	m_sceneManager      = std::make_unique<SceneManager>();
-	m_controllerManager = std::make_unique<ControllerManager>();
 
 	// シーンの登録
-	m_sceneManager->addScene("Logo"    , std::make_unique<LogoScene>    (mp_wsi, m_sceneManager.get(), m_controllerManager.get()));
-	m_sceneManager->addScene("Title"   , std::make_unique<TitleScene>   (mp_wsi, m_sceneManager.get(), m_controllerManager.get()));
-	m_sceneManager->addScene("Gameplay", std::make_unique<GameplayScene>(mp_wsi, m_sceneManager.get(), m_controllerManager.get()));
+	m_sceneManager->addScene("Logo"    , std::make_unique<LogoScene>    (mp_wsi, m_sceneManager.get()));
+	m_sceneManager->addScene("Title"   , std::make_unique<TitleScene>   (mp_wsi, m_sceneManager.get()));
+	m_sceneManager->addScene("Gameplay", std::make_unique<GameplayScene>(mp_wsi, m_sceneManager.get()));
 
 	// 開始シーンの設定
 
@@ -64,8 +61,6 @@ void Core::Update()
 {
 	if (m_sceneManager->isEnd())
 		m_IsEnd = true;
-
-	m_controllerManager->Update();
 
 	m_sceneManager->Update();
 }

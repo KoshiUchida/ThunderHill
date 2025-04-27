@@ -25,7 +25,7 @@ private:
 
 public:
 	// メインシステム
-	TitleScene(WSI* wsi, SceneManager* sceneManager, ControllerManager* contorollerManager);
+	TitleScene(WSI* wsi, SceneManager* sceneManager);
 	~TitleScene();
 	void Initialize() override;
 	void Update()     override;

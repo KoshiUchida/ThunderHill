@@ -16,7 +16,6 @@
 
 class WSI;
 class SceneManager;
-class ControllerManager;
 
 /// <summary>
 /// シーンの基底クラス
@@ -33,15 +32,12 @@ protected:
 	// シーンマネージャへのポインタ
 	SceneManager* mp_SceneManager;
 
-	// コントローラマネージャへのポインタ
-	ControllerManager* mp_ControllerManager;
-
 	// オブジェクトマネージャへのポインタ
 	ObjectManager m_ObjectManager;
 
 public:
 	/*メインシステム*/
-	SceneBace(WSI* pWSI, SceneManager* pSceneManager, ControllerManager* pControllerManager, Position2D cameraPosition = Position2D(0.f, 0.f));
+	SceneBace(WSI* pWSI, SceneManager* pSceneManager, Position2D cameraPosition = Position2D(0.f, 0.f));
 	virtual ~SceneBace() = default;
 	virtual void Initialize() = 0;
 	virtual void Update()     = 0;
@@ -52,15 +48,5 @@ protected:
 	/*内部実装*/
 	// シーンの変更
 	void ChangeScene(const std::string& nextSceneName);
-
-	// 共有データの読み込み
-	void ReadSharedData(const std::string& key, int*         pValue) const;
-	void ReadSharedData(const std::string& key, float*       pValue) const;
-	void ReadSharedData(const std::string& key, std::string* pValue) const;
-
-	// 共有データへの書き込み
-	void WriteSharedData(const std::string& key, int         value);
-	void WriteSharedData(const std::string& key, float       value);
-	void WriteSharedData(const std::string& key, std::string value);
 };
 

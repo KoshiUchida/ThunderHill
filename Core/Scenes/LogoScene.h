@@ -33,13 +33,10 @@ private:
 	// 透明度が上がるかどうか
 	bool m_IsUpAlpha;
 
-	// BGM
-	int ms_BGM;
-
 
 public:
 	// メインシステム
-	LogoScene(WSI* wsi, SceneManager* sceneManager, ControllerManager* contorollerManager);
+	LogoScene(WSI* wsi, SceneManager* sceneManager);
 	~LogoScene();
 	void Initialize() override;
 	void Update()     override;

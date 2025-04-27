@@ -13,7 +13,6 @@
 
 class WSI;
 class SceneManager;
-class ControllerManager;
 
 /// <summary>
 /// コアクラス
@@ -30,8 +29,6 @@ private:
 	/*マネージャ関連*/
 	// シーンマネージャ
 	std::unique_ptr<SceneManager>      m_sceneManager;
-	// コントローラマネージャ
-	std::unique_ptr<ControllerManager> m_controllerManager;
 
 public:
 	/*メインシステム*/

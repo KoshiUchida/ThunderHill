@@ -98,32 +98,6 @@ void SceneManager::RequestSceneChange(const std::string& changeSceneName)
 }
 
 /// <summary>
-/// 共有データの取得
-/// </summary>
-/// <param name="key">取得したい共有データのキー</param>
-/// <returns>キーの共有データ</returns>
-std::string SceneManager::GetShareData(const std::string& key) const
-{
-	if (m_shareData.count(key) == 0)
-	{
-		printError(key + "　は登録されていません。");
-		return std::string{};
-	}
-
-	return m_shareData.at(key);
-}
-
-/// <summary>
-/// 共有データの設定
-/// </summary>
-/// <param name="key">設定したい共有データのキー</param>
-/// <param name="value">設定したい共有データの値</param>
-void SceneManager::SetSharedData(const std::string& key, const std::string& value)
-{
-	m_shareData[key] = value;
-}
-
-/// <summary>
 /// シーンの変更
 /// </summary>
 void SceneManager::ChangeScene()
