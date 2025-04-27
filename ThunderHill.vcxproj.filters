@@ -82,6 +82,18 @@
     <ClInclude Include="Manager\ShareData.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="Objects\Player.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\ThunderGenerater.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Thunder.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CCRandom.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowSettingItems.cpp" />
@@ -142,6 +154,18 @@
     </ClCompile>
     <ClCompile Include="Manager\ShareData.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Player.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Thunder.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\ThunderGenerater.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CCRandom.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

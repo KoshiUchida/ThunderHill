@@ -52,8 +52,6 @@ void ObjectManager::Initialize()
 
 	for (auto& element : m_Objects)
 	{
-		element.second->Initialize();
-
 		if (element.second->layer() > m_MaxLayer)
 			m_MaxLayer = element.second->layer();
 	}

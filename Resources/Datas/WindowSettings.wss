@@ -6,10 +6,10 @@
     "FragOutApplicationLogValid": true,
     "RunTimeMin": 17,
     "Screen": {
-        "height": 720,
-        "width": 1280
+        "height": 240,
+        "width": 256
     },
     "Volume": 32,
-    "WindowSizeExtendRate": 0.6,
+    "WindowSizeExtendRate": 3.0,
     "WindowTitle": "Thunder Hill"
 }

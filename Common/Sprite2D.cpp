@@ -74,7 +74,7 @@ void Sprite2D::Draw(const Camera& camera)
 	Position2D ScreenPosition = camera.ConvertWorldToScreenPosition(m_Transform.GetPosition());
 	DrawRectRotaGraph
 	(
-		ScreenPosition.x(), ScreenPosition.y(),
+		static_cast<int>(ScreenPosition.x()), static_cast<int>(ScreenPosition.y()),
 		m_Page % 10 * m_TileWidth, m_Page / 10 * m_TileHeight,
 		m_TileWidth, m_TileHeight,
 		m_exRate, m_Transform.GetAngleRAD(),

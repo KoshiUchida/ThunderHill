@@ -16,6 +16,10 @@
 
 #include "../Common/Collisions.h"
 
+#include "../Manager/ObjectManager.h"
+#include "../Objects/Player.h"
+#include "../Objects/Thunder.h"
+
 using namespace std;
 
 /// <summary>
@@ -40,6 +44,11 @@ void GameplayScene::Initialize()
 	// Font Size
 	m_FontSize = p_wsi->GetWindowSetting().FontSize;
 	SetFontSize(m_FontSize);
+
+	// Object Set
+	ObjectManager& om{ ObjectManager::GetInstance() };
+	om.AddObject("Player", make_unique<Player>());
+	om.AddObject("Thunder", make_unique<Thunder>(Position2D(p_wsi->ScreenCenterX(), p_wsi->ScreenTop())));
 }
 
 /// <summary>

@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Common\CCRandom.h" />
     <ClInclude Include="Common\Animation2D.h" />
     <ClInclude Include="Common\Camera.h" />
     <ClInclude Include="Common\Collisions.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Manager\ResourceManager.h" />
     <ClInclude Include="Manager\SceneManager.h" />
     <ClInclude Include="Objects\ObjectBace.h" />
+    <ClInclude Include="Objects\Player.h" />
     <ClInclude Include="Scenes\GameplayScene.h" />
     <ClInclude Include="Scenes\LogoScene.h" />
     <ClInclude Include="Scenes\SceneBace.h" />
@@ -148,10 +150,13 @@
     <ClInclude Include="Manager\Joypad.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Manager\ShareData.h" />
+    <ClInclude Include="Objects\ThunderGenerater.h" />
+    <ClInclude Include="Objects\Thunder.h" />
     <ClInclude Include="WindowSettingItems.h" />
     <ClInclude Include="WinMain.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Common\CCRandom.cpp" />
     <ClCompile Include="Common\Animation2D.cpp" />
     <ClCompile Include="Common\Camera.cpp" />
     <ClCompile Include="Common\Collisions.cpp" />
@@ -165,12 +170,15 @@
     <ClCompile Include="Manager\ResourceManager.cpp" />
     <ClCompile Include="Manager\SceneManager.cpp" />
     <ClCompile Include="Objects\ObjectBace.cpp" />
+    <ClCompile Include="Objects\Player.cpp" />
     <ClCompile Include="Scenes\GameplayScene.cpp" />
     <ClCompile Include="Scenes\LogoScene.cpp" />
     <ClCompile Include="Scenes\SceneBace.cpp" />
     <ClCompile Include="Scenes\TitleScene.cpp" />
     <ClCompile Include="Manager\Joypad.cpp" />
     <ClCompile Include="Manager\ShareData.cpp" />
+    <ClCompile Include="Objects\ThunderGenerater.cpp" />
+    <ClCompile Include="Objects\Thunder.cpp" />
     <ClCompile Include="WindowSettingItems.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
