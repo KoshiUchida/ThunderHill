@@ -41,3 +41,8 @@ void Player::Render(const Camera& camera)
 void Player::Finalize()
 {
 }
+
+Collisions::BoxCollision& Player::GetCollider()
+{
+	return m_Collider;
+}

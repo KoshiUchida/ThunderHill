@@ -18,5 +18,7 @@ public:
 	void Update() override;
 	void Render(const Camera& camera) override;
 	void Finalize() override;
+
+	Collisions::BoxCollision& GetCollider();
 };
 

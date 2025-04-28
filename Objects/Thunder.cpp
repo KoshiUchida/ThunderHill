@@ -4,12 +4,21 @@
 #include "../Common/CCRandom.h"
 #include "../WindowSettingItems.h"
 
+#include "../Manager/ObjectManager.h"
+#include "Player.h"
+
+#include "../Manager/SceneManager.h"
+
 using namespace std;
+
+static constexpr int   Thickness{ 5 };
+static constexpr float FallExRate{ 1.1f };
 
 Thunder::Thunder(const Position2D& spownPosition) :
 	ObjectBace(Transform2D(spownPosition, 0.f)),
     m_Time{},
-    m_DrawThunderLine{}
+    m_DrawThunderLine{},
+    m_Fall{ Position2D(), Thickness * 2.f, Thickness * 2.f * FallExRate }
 {
 }
 
@@ -38,12 +47,15 @@ void Thunder::Update()
     {
         m_IsDestroy = true;
     }
+
+    if (!m_DrawThunderLine)
+        return;
+
+    Collider();
 }
 
-static constexpr int   Thickness{ 5 };
 static constexpr float NoneDraw{ 2.1f };
 static constexpr float CurveExRate{ 0.35f };
-static constexpr float FallExRate{ 1.1f };
 static constexpr unsigned int ThunderColor{ Colors::LightBlue };
 
 void Thunder::Render(const Camera& camera)
@@ -67,13 +79,28 @@ void Thunder::Render(const Camera& camera)
     }
 
     if (m_DrawThunderLine || m_Time % 4)
-        DrawBox(m_Fall.x() - Thickness, m_Fall.y() - Thickness * FallExRate,
-        m_Fall.x() + Thickness, m_Fall.y(),
-        ThunderColor, true);
+    {
+        Collisions::Box FallBox{ m_Fall.GetBox() };
+        DrawBox(FallBox.left, FallBox.top,
+            FallBox.right, FallBox.bottom,
+            ThunderColor, true);
+    }
 }
 
 void Thunder::Finalize()
 {
+}
+
+void Thunder::Collider()
+{
+    ObjectManager& om{ ObjectManager::GetInstance() };
+    Player* player{ static_cast<Player*>(om.GetObjectPtr("Player")) };
+
+    if (!player)
+        return;
+
+    if (Collisions::Detection(player->GetCollider(), m_Fall))
+        SceneManager::GetInstance().RequestSceneChange("Result");
 }
 
 int clamp(const int& val, const int& low, const int& high) {
@@ -122,5 +149,5 @@ void Thunder::Simulate()
             branches.end());
 	}
 
-    m_Fall = Position2D(mainPos.x, mainPos.y);
+    m_Fall.SetPosition(Position2D(mainPos.x, mainPos.y));
 }

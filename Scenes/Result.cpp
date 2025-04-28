@@ -21,7 +21,9 @@ void Result::Update()
 void Result::Render()
 {
 #if defined(_DEBUG)
-	DrawString(p_wsi->ScreenRight() - WSI::GetInstance().GetWindowSetting().FontSize * 13, p_wsi->ScreenBottom() - WSI::GetInstance().GetWindowSetting().FontSize * 2, "GameplayScene", Colors::Cyan);
+	DrawString(p_wsi->ScreenRight() - WSI::GetInstance().GetWindowSetting().FontSize * 13,
+		p_wsi->ScreenBottom() - WSI::GetInstance().GetWindowSetting().FontSize * 2,
+		"ResultScene", Colors::Cyan);
 #endif
 }
 

@@ -5,9 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Scenes">
-      <UniqueIdentifier>{7158c54d-2a5e-4b84-8499-449b62a4b8a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Managers">
       <UniqueIdentifier>{a41e8567-e8af-4a6a-966d-c30abe2e3840}</UniqueIdentifier>
     </Filter>
@@ -16,6 +13,9 @@
     </Filter>
     <Filter Include="Objects">
       <UniqueIdentifier>{a555594e-02eb-480e-ae05-7d63eee57152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{7158c54d-2a5e-4b84-8499-449b62a4b8a6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

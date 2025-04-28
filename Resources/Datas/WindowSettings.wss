@@ -2,7 +2,7 @@
     "ColorBitDepth": 32,
     "FlagChangeWindowMode": true,
     "Font": "cinecaption226.ttf",
-    "FontSize": 32,
+    "FontSize": 11,
     "FragOutApplicationLogValid": true,
     "RunTimeMin": 17,
     "Screen": {

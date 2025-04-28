@@ -1,6 +1,7 @@
 #pragma once
 #include "ObjectBace.h"
 #include <vector>
+#include "../Common/Collisions.h"
 
 class Thunder final :
 	public ObjectBace
@@ -10,7 +11,7 @@ private:
 	std::vector<Position2D> m_Curves;
 
     // —Ž‚¿‚½’n“_
-    Position2D m_Fall;
+    Collisions::BoxCollision m_Fall;
 
     // Œo‰ßŽžŠÔ
     int m_Time;
@@ -26,6 +27,9 @@ public:
 	void Update() override;
 	void Render(const Camera& camera) override;
 	void Finalize() override;
+
+private:
+    void Collider();
 
 private:
     struct Position {
