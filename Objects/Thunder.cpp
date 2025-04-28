@@ -8,7 +8,8 @@ using namespace std;
 
 Thunder::Thunder(const Position2D& spownPosition) :
 	ObjectBace(Transform2D(spownPosition, 0.f)),
-    m_Time{}
+    m_Time{},
+    m_DrawThunderLine{}
 {
 }
 
@@ -21,36 +22,54 @@ void Thunder::Initialize()
     Simulate();
 
     m_Time = 0;
+
+    m_DrawThunderLine = false;
 }
 
 void Thunder::Update()
 {
     m_Time++;
+
+    if (m_Time == 100)
+    {
+        m_DrawThunderLine = true;
+    }
+    else if (m_Time >= 150)
+    {
+        m_IsDestroy = true;
+    }
 }
 
-static constexpr int Thickness{ 5 };
-static constexpr float NoneDraw{ 2.5f };
-static constexpr float CurveExRate{ 0.3f };
+static constexpr int   Thickness{ 5 };
+static constexpr float NoneDraw{ 2.1f };
+static constexpr float CurveExRate{ 0.35f };
+static constexpr float FallExRate{ 1.1f };
+static constexpr unsigned int ThunderColor{ Colors::LightBlue };
 
 void Thunder::Render(const Camera& camera)
 {
-	for (int i{ 1 }; i < m_Curves.size(); i++)
+    if (m_DrawThunderLine && m_Time % 3)
     {
-        DrawBox(m_Curves[i - 1].x() - Thickness * CurveExRate, m_Curves[i - 1].y() - Thickness * CurveExRate,
-            m_Curves[i - 1].x() + Thickness * CurveExRate, m_Curves[i - 1].y() + Thickness * CurveExRate,
-            Colors::LightBlue, true);
+        for (int i{ 1 }; i < m_Curves.size(); i++)
+        {
+            DrawBox(m_Curves[i - 1].x() - Thickness * CurveExRate, m_Curves[i - 1].y() - Thickness * CurveExRate,
+                m_Curves[i - 1].x() + Thickness * CurveExRate, m_Curves[i - 1].y() + Thickness * CurveExRate,
+                ThunderColor, true);
 
-        if (m_Curves[i - 1].MeasureUpTo(m_Curves[i]) < NoneDraw)
-            continue;
-        DrawLine(
-            static_cast<int>(m_Curves[i - 1].x()), static_cast<int>(m_Curves[i - 1].y()),
-            static_cast<int>(m_Curves[i].x()), static_cast<int>(m_Curves[i].y()),
-            Colors::LightBlue, Thickness);
+            if (m_Curves[i - 1].MeasureUpTo(m_Curves[i]) < NoneDraw)
+                continue;
+
+            DrawLine(
+                static_cast<int>(m_Curves[i - 1].x()), static_cast<int>(m_Curves[i - 1].y()),
+                static_cast<int>(m_Curves[i].x()), static_cast<int>(m_Curves[i].y()),
+                ThunderColor, Thickness);
+        }
     }
 
-    DrawBox(m_Fall.x() - Thickness, m_Fall.y() - Thickness,
-        m_Fall.x() + Thickness, m_Fall.y() + Thickness,
-        Colors::LightBlue, true);
+    if (m_DrawThunderLine || m_Time % 4)
+        DrawBox(m_Fall.x() - Thickness, m_Fall.y() - Thickness * FallExRate,
+        m_Fall.x() + Thickness, m_Fall.y(),
+        ThunderColor, true);
 }
 
 void Thunder::Finalize()
@@ -61,7 +80,7 @@ int clamp(const int& val, const int& low, const int& high) {
     return std::max<int>(low, std::min<int>(val, high));
 }
 
-constexpr int Rage = 5;
+constexpr int Rage = 6;
 constexpr int SubLife = 5;
 
 void Thunder::Simulate()

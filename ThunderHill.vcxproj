@@ -143,6 +143,7 @@
     <ClInclude Include="Manager\SceneManager.h" />
     <ClInclude Include="Objects\ObjectBace.h" />
     <ClInclude Include="Objects\Player.h" />
+    <ClInclude Include="Scenes\Result.h" />
     <ClInclude Include="Scenes\GameplayScene.h" />
     <ClInclude Include="Scenes\LogoScene.h" />
     <ClInclude Include="Scenes\SceneBace.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Manager\SceneManager.cpp" />
     <ClCompile Include="Objects\ObjectBace.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Scenes\Result.cpp" />
     <ClCompile Include="Scenes\GameplayScene.cpp" />
     <ClCompile Include="Scenes\LogoScene.cpp" />
     <ClCompile Include="Scenes\SceneBace.cpp" />

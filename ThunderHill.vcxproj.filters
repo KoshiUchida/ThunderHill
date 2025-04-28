@@ -94,6 +94,9 @@
     <ClInclude Include="Common\CCRandom.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\Result.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowSettingItems.cpp" />
@@ -166,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="Common\CCRandom.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\Result.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

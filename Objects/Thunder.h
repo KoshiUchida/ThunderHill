@@ -15,6 +15,9 @@ private:
     // Œo‰ßŠÔ
     int m_Time;
 
+    // —‹‚Ì‹OÕ‚ğ•\¦‚·‚é‚©
+    bool m_DrawThunderLine;
+
 public:
 	Thunder(const Position2D& spownPosition);
 	~Thunder();

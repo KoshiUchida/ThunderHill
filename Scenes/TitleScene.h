@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/04/27
+ * @date   2025/04/28
  */
 
 #pragma once
@@ -21,8 +21,6 @@
 class TitleScene
 	: public SceneBace
 {
-private:
-
 public:
 	// メインシステム
 	TitleScene();
