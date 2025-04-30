@@ -25,8 +25,8 @@ ThunderGenerater::ThunderGenerater() :
 ThunderGenerater::~ThunderGenerater() = default;
 
 static constexpr int CloudVolume{ 40 };
-static constexpr int CoolTimeMax{ 100 };
-static constexpr int CoolTimeMin{ 55 };
+static constexpr int CoolTimeMax{ 60 };
+static constexpr int CoolTimeMin{ 30 };
 
 void ThunderGenerater::Initialize()
 {

@@ -6,6 +6,8 @@ class TimeLimitUI :
 private:
     int m_Time;
 
+    int m_LiveTime;
+
 public:
     TimeLimitUI() noexcept;
     ~TimeLimitUI() noexcept;

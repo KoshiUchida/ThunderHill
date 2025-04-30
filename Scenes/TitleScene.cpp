@@ -52,6 +52,8 @@ void TitleScene::Initialize()
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
 
 	m_Bottom = false;
+
+	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderRainBGM.ogg"), DX_PLAYTYPE_LOOP);
 }
 
 /// <summary>
@@ -63,7 +65,10 @@ void TitleScene::Update()
 		m_Bottom = true;
 
 	if (m_Bottom && p_Joypad.IsPressed(XINPUT_GAMEPAD_A))
+	{
+		PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.ogg"), DX_PLAYTYPE_BACK);
 		ChangeScene("Gameplay");
+	}
 }
 
 static constexpr char StartString[6] = { "Start" };
@@ -90,5 +95,5 @@ void TitleScene::Render()
 /// </summary>
 void TitleScene::Finalize()
 {
-	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.ogg"), DX_PLAYTYPE_BACK);
+	StopSoundMem(ResourceManager::GetInstance().RequestSound("ThunderRainBGM.ogg"));
 }

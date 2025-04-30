@@ -18,7 +18,7 @@ void Player::Initialize()
 {
 }
 
-static constexpr float Speed{ 5.f };
+static constexpr float Speed{ 2.5f };
 
 void Player::Update()
 {

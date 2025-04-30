@@ -95,6 +95,5 @@ void LogoScene::Render()
 void LogoScene::Finalize()
 {
 	ms_Logo.reset();
-
 	StopSoundMem(ResourceManager::GetInstance().RequestSound("logoBGM.ogg"));
 }

@@ -10,6 +10,13 @@ private:
 
 	bool m_Bottom;
 
+	Position2D m_GameOverStringPos;
+	int m_FontSize;
+	int m_GameOverStringFontSize;
+
+	Position2D m_ScoreStringPos;
+	std::string m_Score;
+
 public:
 	Result() noexcept;
 	~Result() noexcept;

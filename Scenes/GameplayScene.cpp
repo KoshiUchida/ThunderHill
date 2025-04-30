@@ -19,6 +19,7 @@
 #include "../Manager/ObjectManager.h"
 #include "../Objects/Player.h"
 #include "../Objects/ThunderGenerater.h"
+#include "../Objects/TimeLimitUI.h"
 
 using namespace std;
 
@@ -49,6 +50,7 @@ void GameplayScene::Initialize()
 	ObjectManager& om{ ObjectManager::GetInstance() };
 	om.AddObject("Player", make_unique<Player>());
 	om.AddObject("Generater", make_unique<ThunderGenerater>());
+	om.AddObject("TimeLimitUI", make_unique<TimeLimitUI>());
 }
 
 /// <summary>
