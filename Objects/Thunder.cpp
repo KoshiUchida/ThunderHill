@@ -9,6 +9,10 @@
 
 #include "../Manager/SceneManager.h"
 
+#include "../Manager/ResourceManager.h"
+
+#include "../Common/CCRandom.h"
+
 using namespace std;
 
 static constexpr int   Thickness{ 5 };
@@ -42,6 +46,7 @@ void Thunder::Update()
     if (m_Time == 100)
     {
         m_DrawThunderLine = true;
+        PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderSE" + to_string(CCRandom::GetInstane().Rand(0, 2)) + ".ogg"), DX_PLAYTYPE_BACK);
     }
     else if (m_Time >= 150)
     {

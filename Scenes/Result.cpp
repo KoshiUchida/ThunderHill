@@ -2,9 +2,12 @@
 #include <DxLib.h>
 #include "../Common/Colors.h"
 #include "../WindowSettingItems.h"
+#include "../Manager/ResourceManager.h"
 
 Result::Result() noexcept :
-	SceneBace()
+	SceneBace(),
+	p_pad{ Joypad::GetInstance() },
+	m_Bottom{}
 {
 }
 
@@ -12,10 +15,16 @@ Result::~Result() noexcept = default;
 
 void Result::Initialize()
 {
+	m_Bottom = false;
 }
 
 void Result::Update()
 {
+	if (!m_Bottom && !p_pad.IsPressed(XINPUT_GAMEPAD_A))
+		m_Bottom = true;
+
+	if (m_Bottom && p_pad.IsPressed(XINPUT_GAMEPAD_A))
+		ChangeScene("Title");
 }
 
 void Result::Render()
@@ -29,4 +38,5 @@ void Result::Render()
 
 void Result::Finalize()
 {
+	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.ogg"), DX_PLAYTYPE_BACK);
 }

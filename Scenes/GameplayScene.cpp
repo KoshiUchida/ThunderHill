@@ -18,7 +18,7 @@
 
 #include "../Manager/ObjectManager.h"
 #include "../Objects/Player.h"
-#include "../Objects/Thunder.h"
+#include "../Objects/ThunderGenerater.h"
 
 using namespace std;
 
@@ -48,7 +48,7 @@ void GameplayScene::Initialize()
 	// Object Set
 	ObjectManager& om{ ObjectManager::GetInstance() };
 	om.AddObject("Player", make_unique<Player>());
-	om.AddObject("Thunder", make_unique<Thunder>(Position2D(p_wsi->ScreenCenterX(), p_wsi->ScreenTop())));
+	om.AddObject("Generater", make_unique<ThunderGenerater>());
 }
 
 /// <summary>

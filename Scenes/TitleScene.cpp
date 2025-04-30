@@ -21,8 +21,12 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-TitleScene::TitleScene()
-	: SceneBace()
+TitleScene::TitleScene() :
+	SceneBace(),
+	p_Joypad{ Joypad::GetInstance() },
+	m_FontSize{},
+	m_TitleFontSize{},
+	m_Bottom{}
 {
 }
 
@@ -36,7 +40,18 @@ TitleScene::~TitleScene() = default;
 /// </summary>
 void TitleScene::Initialize()
 {
+	WSI& wsi{ WSI::GetInstance() };
+
+	m_TitleStringPos = Position2D(wsi.ScreenCenterX() - 70.f, wsi.ScreenCenterY() - 20.f);
+	m_StartStringPos = Position2D(wsi.ScreenCenterX() - 15.f, wsi.ScreenBottom() - 60.f);
+
+	m_FontSize = wsi.GetWindowSetting().FontSize + 1;
+
+	m_TitleFontSize = m_FontSize + 10;
+
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
+
+	m_Bottom = false;
 }
 
 /// <summary>
@@ -44,13 +59,30 @@ void TitleScene::Initialize()
 /// </summary>
 void TitleScene::Update()
 {
+	if (!m_Bottom && !p_Joypad.IsPressed(XINPUT_GAMEPAD_A))
+		m_Bottom = true;
+
+	if (m_Bottom && p_Joypad.IsPressed(XINPUT_GAMEPAD_A))
+		ChangeScene("Gameplay");
 }
+
+static constexpr char StartString[6] = { "Start" };
+static constexpr unsigned int StartStringColor{ Colors::White };
+static constexpr char TitleString[13] = { "THUNDER HILL" };
+static constexpr unsigned int TitleStringColor{ Colors::LightBlue };
 
 /// <summary>
 /// ï`âÊèàóù
 /// </summary>
 void TitleScene::Render()
 {
+	SetFontSize(m_TitleFontSize);
+
+	DrawString(m_TitleStringPos.x(), m_TitleStringPos.y(), TitleString, TitleStringColor);
+
+	SetFontSize(m_FontSize);
+
+	DrawString(m_StartStringPos.x(), m_StartStringPos.y(), StartString, StartStringColor);
 }
 
 /// <summary>
@@ -58,4 +90,5 @@ void TitleScene::Render()
 /// </summary>
 void TitleScene::Finalize()
 {
+	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.ogg"), DX_PLAYTYPE_BACK);
 }

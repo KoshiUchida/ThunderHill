@@ -39,7 +39,7 @@ void LogoScene::Initialize()
 {
 	ResourceManager& rm{ ResourceManager::GetInstance() };
 
-	ms_Logo = std::make_unique<Sprite2D>(rm.RequestTexture("Logo.png"), 0.2f);
+	ms_Logo = std::make_unique<Sprite2D>(rm.RequestTexture("Logo.png"), 1.4f);
 	ms_Logo->Initialize(Transform2D(Position2D(static_cast<float>(p_wsi->ScreenCenterX()), static_cast<float>(p_wsi->ScreenCenterY())), 0.f));
 	
 	m_Time      = 0;

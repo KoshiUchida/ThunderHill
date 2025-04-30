@@ -15,12 +15,25 @@
 
 #include "../Common/Sprite2D.h"
 
+#include "../Manager/Joypad.h"
+
 /// <summary>
 /// タイトルシーン
 /// </summary>
-class TitleScene
-	: public SceneBace
+class TitleScene :
+	public SceneBace
 {
+private:
+	Position2D m_StartStringPos;
+	Position2D m_TitleStringPos;
+
+	int m_FontSize;
+	int m_TitleFontSize;
+
+	Joypad& p_Joypad;
+
+	bool m_Bottom;
+
 public:
 	// メインシステム
 	TitleScene();
