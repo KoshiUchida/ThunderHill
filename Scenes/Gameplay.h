@@ -1,20 +1,23 @@
 /**
- * @file   GameplayScene.h
+ * @file   Gameplay.h
  *
  * @brief  ゲームプレイシーンのヘッダファイル
  *
  * @author CatCode
- * @date   2025/04/27
+ * 
+ * @date   2025/05/04
  */
 
 #pragma once
 #include "SceneBace.h"
+
 #include <memory>
+#include "../Manager/Joypad.h"
 
 /// <summary>
 /// ゲームプレイシーン
 /// </summary>
-class GameplayScene
+class Gameplay
 	: public SceneBace
 {
 private:
@@ -23,10 +26,12 @@ private:
 	Position2D m_OpeStringPos;
 	int m_OpeFontSize;
 
+	Joypad& s_Joypad;
+
 public:
 	// Main System
-	GameplayScene();
-	~GameplayScene() noexcept;
+	Gameplay();
+	~Gameplay() noexcept;
 	void Initialize() override final;
 	void Update()     override final;
 	void Render()     override final;

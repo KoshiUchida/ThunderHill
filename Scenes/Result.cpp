@@ -1,13 +1,28 @@
+/**
+ * @file   Result.cpp
+ *
+ * @brief  リザルトシーンのソースファイル
+ *
+ * @author CatCode
+ *
+ * @date   2025/05/04
+ */
 #include "Result.h"
+
 #include <DxLib.h>
+#include "../Common/Colors.h"
+
 #include "../WindowSettingItems.h"
 #include "../Manager/ResourceManager.h"
-#include "../Common/Colors.h"
 #include "../Manager/ShareData.h"
 
+
+/// <summary>
+/// コンストラクタ
+/// </summary>
 Result::Result() noexcept :
 	SceneBace(),
-	p_pad{ Joypad::GetInstance() },
+	s_Joypad{ Joypad::GetInstance() },
 	m_Bottom{},
 	m_FontSize{},
 	m_GameOverStringFontSize{},
@@ -15,15 +30,19 @@ Result::Result() noexcept :
 {
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Result::~Result() noexcept = default;
 
+/// <summary>
+/// 初期化処理
+/// </summary>
 void Result::Initialize()
 {
-	m_Bottom = false;
-
 	WSI& wsi{ WSI::GetInstance() };
 
-	m_GameOverStringPos = Position2D(wsi.ScreenCenterX() - 50.f, wsi.ScreenCenterY() - 30.f);
+	m_GameOverStringPos = Position2D(wsi.ScreenCenterX() - 40.f, wsi.ScreenCenterY() - 30.f);
 	m_ScoreStringPos = Position2D(wsi.ScreenCenterX() - 30.f, wsi.ScreenCenterY() + 30.f);
 
 	m_FontSize = wsi.GetWindowSetting().FontSize;
@@ -32,7 +51,9 @@ void Result::Initialize()
 
 	m_OpeStringPos = Position2D(wsi.ScreenLeft() + 5.f, wsi.ScreenBottom() - m_FontSize);
 
+
 	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderRainBGM.ogg"), DX_PLAYTYPE_LOOP);
+
 
 	ShareData& p_sd{ ShareData::GetInstance() };
 
@@ -43,14 +64,19 @@ void Result::Initialize()
 		m_Score = "Score : " + m_Score;
 	}
 
+
+	m_Bottom = false;
 }
 
+/// <summary>
+/// 更新処理
+/// </summary>
 void Result::Update()
 {
-	if (!m_Bottom && !p_pad.IsPressed(XINPUT_GAMEPAD_A))
+	if (!m_Bottom && !s_Joypad.IsPressed(XINPUT_GAMEPAD_A))
 		m_Bottom = true;
 
-	if (m_Bottom && p_pad.IsPressed(XINPUT_GAMEPAD_A))
+	if (m_Bottom && s_Joypad.IsPressed(XINPUT_GAMEPAD_A))
 	{
 		PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.ogg"), DX_PLAYTYPE_BACK);
 		ChangeScene("Title");
@@ -58,18 +84,25 @@ void Result::Update()
 }
 
 static constexpr unsigned int StringColor{ Colors::White };
-static constexpr char GameOverString[10] = { "GAME OVER" };
-static constexpr char OpeString[21] = { "Select:pad(A),key(Z)" };
+static constexpr char ResultString[] = { "RESULT" };
+static constexpr char OpePadString[] = { "Select:A" };
+static constexpr char OpeKeyString[] = { "Select:Z" };
 
+/// <summary>
+/// 描画処理
+/// </summary>
 void Result::Render()
 {
 	SetFontSize(m_GameOverStringFontSize);
 
-	DrawString(m_GameOverStringPos.x(), m_GameOverStringPos.y(), GameOverString, StringColor);
+	DrawString(m_GameOverStringPos.x(), m_GameOverStringPos.y(), ResultString, StringColor);
 
 	SetFontSize(m_OpeFontSize);
 
-	DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeString, StringColor);
+	if (s_Joypad.IsConnected())
+		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpePadString, StringColor);
+	else
+		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeKeyString, StringColor);
 
 	SetFontSize(m_FontSize);
 

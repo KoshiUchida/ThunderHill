@@ -1,14 +1,14 @@
 /**
- * @file   TitleScene.cpp
+ * @file   Title.cpp
  *
  * @brief  タイトルシーンのソースファイル
  *
  * @author CatCode
  *
- * @date   2025/04/27
+ * @date   2025/05/04
  */
 
-#include "TitleScene.h"
+#include "Title.h"
 
 #include <DxLib.h>
 #include "../WindowSettingItems.h"
@@ -21,7 +21,7 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-TitleScene::TitleScene() :
+Title::Title() :
 	SceneBace(),
 	p_Joypad{ Joypad::GetInstance() },
 	m_FontSize{},
@@ -34,12 +34,12 @@ TitleScene::TitleScene() :
 /// <summary>
 /// Destructor
 /// </summary>
-TitleScene::~TitleScene() = default;
+Title::~Title() = default;
 
 /// <summary>
 /// 初期化処理
 /// </summary>
-void TitleScene::Initialize()
+void Title::Initialize()
 {
 	WSI& wsi{ WSI::GetInstance() };
 
@@ -61,7 +61,7 @@ void TitleScene::Initialize()
 /// <summary>
 /// 更新処理
 /// </summary>
-void TitleScene::Update()
+void Title::Update()
 {
 	if (!m_Bottom && !p_Joypad.IsPressed(XINPUT_GAMEPAD_A))
 		m_Bottom = true;
@@ -77,12 +77,13 @@ static constexpr char StartString[] = { "Start" };
 static constexpr unsigned int StartStringColor{ Colors::White };
 static constexpr char TitleString[] = { "THUNDER HILL" };
 static constexpr unsigned int TitleStringColor{ Colors::LightBlue };
-static constexpr char OpeString[] = { "Select:pad(A),key(Z) End:key(Escape)" };
+static constexpr char OpePadString[] = { "Select:A" };
+static constexpr char OpeKeyString[] = { "Select:Z" };
 
 /// <summary>
 /// 描画処理
 /// </summary>
-void TitleScene::Render()
+void Title::Render()
 {
 	SetFontSize(m_TitleFontSize);
 
@@ -90,7 +91,10 @@ void TitleScene::Render()
 
 	SetFontSize(m_OpeFontSize);
 
-	DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeString, StartStringColor);
+	if (p_Joypad.IsConnected())
+		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpePadString, StartStringColor);
+	else
+		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeKeyString, StartStringColor);
 
 	SetFontSize(m_FontSize);
 
@@ -100,7 +104,7 @@ void TitleScene::Render()
 /// <summary>
 /// 終了処理
 /// </summary>
-void TitleScene::Finalize()
+void Title::Finalize()
 {
 	StopSoundMem(ResourceManager::GetInstance().RequestSound("ThunderRainBGM.ogg"));
 }

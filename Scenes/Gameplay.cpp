@@ -1,14 +1,14 @@
 /**
- * @file   GameplayScene.cpp
+ * @file   Gameplay.cpp
  *
  * @brief  ゲームプレイシーンのソースファイル
  *
  * @author CatCode
  *
- * @date   2025/04/21
+ * @date   2025/05/04
  */
 
-#include "GameplayScene.h"
+#include "Gameplay.h"
 
 #include <DxLib.h>
 #include "../WindowSettingItems.h"
@@ -26,22 +26,23 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-GameplayScene::GameplayScene():
+Gameplay::Gameplay():
 	SceneBace(),
 	m_FontSize{},
-	m_OpeFontSize{}
+	m_OpeFontSize{},
+	s_Joypad{ Joypad::GetInstance() }
 {
 }
 
 /// <summary>
 /// Destructor
 /// </summary>
-GameplayScene::~GameplayScene() noexcept = default;
+Gameplay::~Gameplay() noexcept = default;
 
 /// <summary>
 /// 初期化処理
 /// </summary>
-void GameplayScene::Initialize()
+void Gameplay::Initialize()
 {
 	// Font Size
 	m_FontSize = p_wsi->GetWindowSetting().FontSize;
@@ -59,23 +60,27 @@ void GameplayScene::Initialize()
 /// <summary>
 /// 更新処理
 /// </summary>
-void GameplayScene::Update()
+void Gameplay::Update()
 {
 }
 
 static constexpr unsigned int StringColor{ Colors::White };
-static constexpr char OpeString[] = { "Move:pad(L-Stick),key(←→)" };
+static constexpr char OpePadString[] = { "Move:L-Stick" };
+static constexpr char OpeKeyString[] = { "Move:←→" };
 
 /// <summary>
 /// 描画処理
 /// </summary>
-void GameplayScene::Render()
+void Gameplay::Render()
 {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
 
 	SetFontSize(m_OpeFontSize);
 
-	DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeString, StringColor);
+	if (s_Joypad.IsConnected())
+		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpePadString, StringColor);
+	else
+		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeKeyString, StringColor);
 
 	SetFontSize(m_FontSize);
 
@@ -87,6 +92,6 @@ void GameplayScene::Render()
 /// <summary>
 /// 終了処理
 /// </summary>
-void GameplayScene::Finalize()
+void Gameplay::Finalize()
 {
 }

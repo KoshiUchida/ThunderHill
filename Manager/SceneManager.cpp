@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2024/04/28
+ * @date   2024/05/04
  */
 
 #include "SceneManager.h"
@@ -13,9 +13,9 @@
 #include "../Scenes/SceneBace.h"
 #include "../Common/Error.h"
 
-#include "../Scenes/TitleScene.h"
-#include "../Scenes/GameplayScene.h"
-#include "../Scenes/LogoScene.h"
+#include "../Scenes/Title.h"
+#include "../Scenes/Gameplay.h"
+#include "../Scenes/Logo.h"
 #include "../Scenes/Result.h"
 
 std::unique_ptr<SceneManager> SceneManager::s_SceneManager = nullptr;
@@ -89,14 +89,14 @@ void SceneManager::SetScene()
 {
 	p_ObjectManager = &ObjectManager::GetInstance();
 
-	m_scenes.emplace("Logo"    , std::make_unique<LogoScene>());
-	m_scenes.emplace("Title"   , std::make_unique<TitleScene>());
-	m_scenes.emplace("Gameplay", std::make_unique<GameplayScene>());
+	m_scenes.emplace("Logo"    , std::make_unique<Logo>());
+	m_scenes.emplace("Title"   , std::make_unique<Title>());
+	m_scenes.emplace("Gameplay", std::make_unique<Gameplay>());
 	m_scenes.emplace("Result"  , std::make_unique<Result>());
 
 	// 開始シーンの設定
 #if defined(_DEBUG)
-	SetStartScene("Gameplay");
+	SetStartScene("Result");
 #else
 	SetStartScene("Logo");
 #endif

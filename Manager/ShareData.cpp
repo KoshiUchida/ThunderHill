@@ -26,6 +26,7 @@ ShareData::~ShareData() = default;
 
 std::string ShareData::GetShareData(const std::string& key) const
 {
+	// TODO : ゲーム終了時（おそらく）にハッシュ関係のバグ有り、修正案模索
 	if (m_shareData.empty() || m_shareData.count(key) == 0)
 	{
 		// TODO:ERROR

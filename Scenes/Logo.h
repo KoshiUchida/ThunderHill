@@ -1,11 +1,11 @@
 /**
- * @file   LogoScene.h
+ * @file   Logo.h
  *
  * @brief  ロゴシーンのヘッダファイル
  *
  * @author CatCode
  *
- * @date   2025/04/27
+ * @date   2025/05/04
  */
 
 #pragma once
@@ -17,7 +17,7 @@ class Sprite2D;
 /// <summary>
 /// ロゴシーン
 /// </summary>
-class LogoScene :
+class Logo :
     public SceneBace
 {
 private:
@@ -36,8 +36,8 @@ private:
 
 public:
 	// メインシステム
-	LogoScene();
-	~LogoScene();
+	Logo();
+	~Logo();
 	void Initialize() override;
 	void Update()     override;
 	void Render()     override;

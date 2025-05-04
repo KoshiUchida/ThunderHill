@@ -1,12 +1,25 @@
+/**
+ * @file   Result.h
+ *
+ * @brief  リザルトシーンのヘッダーファイル
+ *
+ * @author CatCode
+ *
+ * @date   2025/05/04
+ */
 #pragma once
 #include "SceneBace.h"
+
 #include "../Manager/Joypad.h"
 
+/// <summary>
+/// リザルトシーン
+/// </summary>
 class Result :
 	public SceneBace
 {
 private:
-	Joypad& p_pad;
+	Joypad& s_Joypad;
 
 	bool m_Bottom;
 

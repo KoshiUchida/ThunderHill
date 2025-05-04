@@ -43,13 +43,13 @@
     <ClInclude Include="Common\FileIO.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\GameplayScene.h">
+    <ClInclude Include="Scenes\Gameplay.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Common\Geometry2D.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\LogoScene.h">
+    <ClInclude Include="Scenes\Logo.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Manager\ObjectManager.h">
@@ -64,7 +64,7 @@
     <ClInclude Include="Manager\ResourceManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\TitleScene.h">
+    <ClInclude Include="Scenes\Title.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Common\Sprite2D.h">
@@ -122,13 +122,13 @@
     <ClCompile Include="Common\FileIO.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\GameplayScene.cpp">
+    <ClCompile Include="Scenes\Gameplay.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Common\Geometry2D.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\LogoScene.cpp">
+    <ClCompile Include="Scenes\Logo.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Manager\ObjectManager.cpp">
@@ -143,7 +143,7 @@
     <ClCompile Include="Manager\SceneManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\TitleScene.cpp">
+    <ClCompile Include="Scenes\Title.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Common\Sprite2D.cpp">

@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/04/26
+ * @date   2025/05/04
  */
 
 #pragma once
@@ -71,5 +71,11 @@ public:
 
 	float GetLeftThumbLXPercent() const noexcept;
 	float GetLeftThumbLYPercent() const noexcept;
+
+	// Ú‘±‚³‚ê‚Ä‚¢‚é‚©
+	bool IsConnected() const noexcept
+	{
+		return m_IsConnected;
+	};
 };
 

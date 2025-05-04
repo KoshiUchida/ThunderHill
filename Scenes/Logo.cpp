@@ -8,7 +8,7 @@
  * @date   2025/04/27
  */
 
-#include "LogoScene.h"
+#include "Logo.h"
 
 #include <DxLib.h>
 #include "../Manager/ResourceManager.h"
@@ -21,7 +21,7 @@ using namespace std;
 /// <summary>
 /// コンストラク
 /// </summary>
-LogoScene::LogoScene()
+Logo::Logo()
 	: SceneBace()
 	, ms_Logo{ nullptr }
 	, m_Time{}
@@ -30,12 +30,12 @@ LogoScene::LogoScene()
 {
 }
 
-LogoScene::~LogoScene() = default;
+Logo::~Logo() = default;
 
 /// <summary>
 /// 初期化処理
 /// </summary>
-void LogoScene::Initialize()
+void Logo::Initialize()
 {
 	ResourceManager& rm{ ResourceManager::GetInstance() };
 
@@ -52,7 +52,7 @@ void LogoScene::Initialize()
 /// <summary>
 /// 更新処理
 /// </summary>
-void LogoScene::Update()
+void Logo::Update()
 {
 	if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0 || Joypad::GetInstance().IsPressed(XINPUT_GAMEPAD_A) || m_Time > SceneChangeTime)
 		ChangeScene("Title");
@@ -82,7 +82,7 @@ void LogoScene::Update()
 /// <summary>
 /// 描画処理
 /// </summary>
-void LogoScene::Render()
+void Logo::Render()
 {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, m_LogoAlpha);
 	ms_Logo->Draw();
@@ -92,7 +92,7 @@ void LogoScene::Render()
 /// <summary>
 /// 終了処理
 /// </summary>
-void LogoScene::Finalize()
+void Logo::Finalize()
 {
 	ms_Logo.reset();
 	StopSoundMem(ResourceManager::GetInstance().RequestSound("logoBGM.ogg"));

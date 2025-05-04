@@ -1,11 +1,11 @@
 /**
- * @file   TitleScene.h
+ * @file   Title.h
  *
  * @brief  タイトルシーンのヘッダファイル
  *
  * @author CatCode
  *
- * @date   2025/04/28
+ * @date   2025/05/04
  */
 
 #pragma once
@@ -20,7 +20,7 @@
 /// <summary>
 /// タイトルシーン
 /// </summary>
-class TitleScene :
+class Title :
 	public SceneBace
 {
 private:
@@ -38,8 +38,8 @@ private:
 
 public:
 	// メインシステム
-	TitleScene();
-	~TitleScene();
+	Title();
+	~Title();
 	void Initialize() override;
 	void Update()     override;
 	void Render()     override;

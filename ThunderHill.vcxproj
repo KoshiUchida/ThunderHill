@@ -144,10 +144,10 @@
     <ClInclude Include="Objects\ObjectBace.h" />
     <ClInclude Include="Objects\Player.h" />
     <ClInclude Include="Scenes\Result.h" />
-    <ClInclude Include="Scenes\GameplayScene.h" />
-    <ClInclude Include="Scenes\LogoScene.h" />
+    <ClInclude Include="Scenes\Gameplay.h" />
+    <ClInclude Include="Scenes\Logo.h" />
     <ClInclude Include="Scenes\SceneBace.h" />
-    <ClInclude Include="Scenes\TitleScene.h" />
+    <ClInclude Include="Scenes\Title.h" />
     <ClInclude Include="Manager\Joypad.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Manager\ShareData.h" />
@@ -174,10 +174,10 @@
     <ClCompile Include="Objects\ObjectBace.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
     <ClCompile Include="Scenes\Result.cpp" />
-    <ClCompile Include="Scenes\GameplayScene.cpp" />
-    <ClCompile Include="Scenes\LogoScene.cpp" />
+    <ClCompile Include="Scenes\Gameplay.cpp" />
+    <ClCompile Include="Scenes\Logo.cpp" />
     <ClCompile Include="Scenes\SceneBace.cpp" />
-    <ClCompile Include="Scenes\TitleScene.cpp" />
+    <ClCompile Include="Scenes\Title.cpp" />
     <ClCompile Include="Manager\Joypad.cpp" />
     <ClCompile Include="Manager\ShareData.cpp" />
     <ClCompile Include="Objects\ThunderGenerater.cpp" />
