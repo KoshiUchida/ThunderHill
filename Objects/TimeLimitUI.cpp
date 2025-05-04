@@ -6,7 +6,7 @@
 #include "../Manager/ShareData.h"
 
 TimeLimitUI::TimeLimitUI() noexcept :
-	ObjectBace(Transform2D()),
+	ObjectBace(Transform2D(Position2D(10.f, 10.f), 0.f)),
 	m_Time{},
 	m_LiveTime{}
 {
@@ -53,8 +53,8 @@ void TimeLimitUI::Finalize()
 		int datar = std::stoi(data, nullptr);
 
 		if (datar < m_LiveTime)
-			ShareData::GetInstance().SetSharedData("Score", std::to_string(m_LiveTime));
+			p_sd.SetSharedData("Score", std::to_string(m_LiveTime));
 	}
 	else
-		ShareData::GetInstance().SetSharedData("Score", std::to_string(m_LiveTime));
+		p_sd.SetSharedData("Score", std::to_string(m_LiveTime));
 }

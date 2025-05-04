@@ -144,6 +144,8 @@ public:
 	/*Setter*/
 	void SetPosition(const Position2D& _position) { *this = _position; }
 	void SetPosition(const float& _x, const float& _y) { *this = Position2D{ _x, _y }; }
+	void SetPositionX(const float& _x) { *this = Position2D{ _x, this->GetPositionY() }; }
+	void SetPositionY(const float& _y) { *this = Position2D{ this->GetPositionX(), _y  }; }
 	void SetRotate(const float& _angle) { *this = _angle; }
 
 	/*Getter*/

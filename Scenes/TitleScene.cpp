@@ -26,7 +26,8 @@ TitleScene::TitleScene() :
 	p_Joypad{ Joypad::GetInstance() },
 	m_FontSize{},
 	m_TitleFontSize{},
-	m_Bottom{}
+	m_Bottom{},
+	m_OpeFontSize{}
 {
 }
 
@@ -42,12 +43,13 @@ void TitleScene::Initialize()
 {
 	WSI& wsi{ WSI::GetInstance() };
 
+	m_FontSize = wsi.GetWindowSetting().FontSize + 1;
+	m_TitleFontSize = m_FontSize + 10;
+	m_OpeFontSize = m_FontSize - 3;
+
 	m_TitleStringPos = Position2D(wsi.ScreenCenterX() - 70.f, wsi.ScreenCenterY() - 20.f);
 	m_StartStringPos = Position2D(wsi.ScreenCenterX() - 15.f, wsi.ScreenBottom() - 60.f);
-
-	m_FontSize = wsi.GetWindowSetting().FontSize + 1;
-
-	m_TitleFontSize = m_FontSize + 10;
+	m_OpeStringPos = Position2D(wsi.ScreenLeft() + 5.f, wsi.ScreenBottom() - m_FontSize);
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
 
@@ -71,10 +73,11 @@ void TitleScene::Update()
 	}
 }
 
-static constexpr char StartString[6] = { "Start" };
+static constexpr char StartString[] = { "Start" };
 static constexpr unsigned int StartStringColor{ Colors::White };
-static constexpr char TitleString[13] = { "THUNDER HILL" };
+static constexpr char TitleString[] = { "THUNDER HILL" };
 static constexpr unsigned int TitleStringColor{ Colors::LightBlue };
+static constexpr char OpeString[] = { "Select:pad(A),key(Z) End:key(Escape)" };
 
 /// <summary>
 /// ï`âÊèàóù
@@ -84,6 +87,10 @@ void TitleScene::Render()
 	SetFontSize(m_TitleFontSize);
 
 	DrawString(m_TitleStringPos.x(), m_TitleStringPos.y(), TitleString, TitleStringColor);
+
+	SetFontSize(m_OpeFontSize);
+
+	DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeString, StartStringColor);
 
 	SetFontSize(m_FontSize);
 

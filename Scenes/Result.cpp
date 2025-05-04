@@ -10,7 +10,8 @@ Result::Result() noexcept :
 	p_pad{ Joypad::GetInstance() },
 	m_Bottom{},
 	m_FontSize{},
-	m_GameOverStringFontSize{}
+	m_GameOverStringFontSize{},
+	m_OpeFontSize{}
 {
 }
 
@@ -27,6 +28,9 @@ void Result::Initialize()
 
 	m_FontSize = wsi.GetWindowSetting().FontSize;
 	m_GameOverStringFontSize = wsi.GetWindowSetting().FontSize + 10;
+	m_OpeFontSize = m_FontSize - 2;
+
+	m_OpeStringPos = Position2D(wsi.ScreenLeft() + 5.f, wsi.ScreenBottom() - m_FontSize);
 
 	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderRainBGM.ogg"), DX_PLAYTYPE_LOOP);
 
@@ -55,12 +59,17 @@ void Result::Update()
 
 static constexpr unsigned int StringColor{ Colors::White };
 static constexpr char GameOverString[10] = { "GAME OVER" };
+static constexpr char OpeString[21] = { "Select:pad(A),key(Z)" };
 
 void Result::Render()
 {
 	SetFontSize(m_GameOverStringFontSize);
 
 	DrawString(m_GameOverStringPos.x(), m_GameOverStringPos.y(), GameOverString, StringColor);
+
+	SetFontSize(m_OpeFontSize);
+
+	DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeString, StringColor);
 
 	SetFontSize(m_FontSize);
 

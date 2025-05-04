@@ -26,7 +26,7 @@ ShareData::~ShareData() = default;
 
 std::string ShareData::GetShareData(const std::string& key) const
 {
-	if (m_shareData.count(key) == 0)
+	if (m_shareData.empty() || m_shareData.count(key) == 0)
 	{
 		// TODO:ERROR
 		return std::string();

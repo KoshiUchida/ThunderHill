@@ -19,6 +19,10 @@ class GameplayScene
 {
 private:
 	int m_FontSize;
+
+	Position2D m_OpeStringPos;
+	int m_OpeFontSize;
+
 public:
 	// Main System
 	GameplayScene();

@@ -5,10 +5,12 @@
 
 static constexpr float Width{ 20.f };
 
-Player::Player()
-	: ObjectBace(Transform2D(Position2D(static_cast<float>(WSI::GetInstance().ScreenCenterX()), static_cast<float>(WSI::GetInstance().ScreenBottom() - 10)), 0.f))
-	, m_Collider(m_Transform.GetPosition(), Width, Width)
-	, p_Pad{ Joypad::GetInstance() }
+Player::Player():
+	ObjectBace(Transform2D(Position2D(static_cast<float>(WSI::GetInstance().ScreenCenterX()), static_cast<float>(WSI::GetInstance().ScreenBottom() - 25)), 0.f)),
+	m_Collider(m_Transform.GetPosition(), Width, Width),
+	p_Pad{ Joypad::GetInstance() },
+	m_MaxPosX{},
+	m_MinPosX{}
 {
 }
 
@@ -16,6 +18,10 @@ Player::~Player() = default;
 
 void Player::Initialize()
 {
+	WSI& wsi{ WSI::GetInstance() };
+
+	m_MaxPosX = wsi.ScreenRight();
+	m_MinPosX = wsi.ScreenLeft();
 }
 
 static constexpr float Speed{ 2.5f };
@@ -25,7 +31,16 @@ void Player::Update()
 	float StickL{ p_Pad.GetLeftThumbLXPercent() };
 
 	if (StickL != 0.f)
+	{
 		m_Transform.AddPositionX(Speed * StickL);
+
+		float PosX = m_Transform.GetPositionX();
+
+		if (PosX < m_MinPosX)
+			m_Transform.SetPositionX(m_MinPosX);
+		if (PosX > m_MaxPosX)
+			m_Transform.SetPositionX(m_MaxPosX);
+	}
 
 	m_Collider.SetPosition(m_Transform.GetPosition());
 }

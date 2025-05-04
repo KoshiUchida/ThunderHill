@@ -59,7 +59,7 @@ void Thunder::Update()
     Collider();
 }
 
-static constexpr float NoneDraw{ 2.1f };
+static constexpr float NoneDraw{ 1.5f };
 static constexpr float CurveExRate{ 0.35f };
 static constexpr unsigned int ThunderColor{ Colors::LightBlue };
 
@@ -121,7 +121,7 @@ void Thunder::Simulate()
 	Position mainPos{ m_Transform.GetPositionX(), m_Transform.GetPositionY() };
 	Position mainDir{ 0, 1 };
 	vector<Mouse> branches;
-	float bottom{ static_cast<float>(WSI::GetInstance().ScreenBottom()) };
+	float bottom{ static_cast<float>(WSI::GetInstance().ScreenBottom()) - 20.f };
 
 	while (mainPos.y < bottom) {
 

@@ -11,6 +11,9 @@ private:
 
 	Joypad& p_Pad;
 
+	float m_MinPosX;
+	float m_MaxPosX;
+
 public:
 	Player();
 	~Player();

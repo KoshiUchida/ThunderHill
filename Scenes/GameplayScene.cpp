@@ -26,9 +26,10 @@ using namespace std;
 /// <summary>
 /// Constructor
 /// </summary>
-GameplayScene::GameplayScene()
-	: SceneBace()
-	, m_FontSize{}
+GameplayScene::GameplayScene():
+	SceneBace(),
+	m_FontSize{},
+	m_OpeFontSize{}
 {
 }
 
@@ -45,6 +46,8 @@ void GameplayScene::Initialize()
 	// Font Size
 	m_FontSize = p_wsi->GetWindowSetting().FontSize;
 	SetFontSize(m_FontSize);
+	m_OpeFontSize = m_FontSize - 1;
+	m_OpeStringPos = Position2D(p_wsi->ScreenLeft() + 5.f, p_wsi->ScreenBottom() - m_FontSize);
 
 	// Object Set
 	ObjectManager& om{ ObjectManager::GetInstance() };
@@ -60,12 +63,21 @@ void GameplayScene::Update()
 {
 }
 
+static constexpr unsigned int StringColor{ Colors::White };
+static constexpr char OpeString[] = { "Move:pad(L-Stick),key(Å©Å®)" };
+
 /// <summary>
 /// ï`âÊèàóù
 /// </summary>
 void GameplayScene::Render()
 {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
+
+	SetFontSize(m_OpeFontSize);
+
+	DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeString, StringColor);
+
+	SetFontSize(m_FontSize);
 
 #if defined(_DEBUG)
 	DrawString(p_wsi->ScreenRight() - m_FontSize * 13, p_wsi->ScreenBottom() - m_FontSize * 2, "GameplayScene", Colors::Cyan);

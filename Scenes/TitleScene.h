@@ -26,9 +26,11 @@ class TitleScene :
 private:
 	Position2D m_StartStringPos;
 	Position2D m_TitleStringPos;
+	Position2D m_OpeStringPos;
 
 	int m_FontSize;
 	int m_TitleFontSize;
+	int m_OpeFontSize;
 
 	Joypad& p_Joypad;
 

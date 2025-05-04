@@ -17,6 +17,9 @@ private:
 	Position2D m_ScoreStringPos;
 	std::string m_Score;
 
+	Position2D m_OpeStringPos;
+	int m_OpeFontSize;
+
 public:
 	Result() noexcept;
 	~Result() noexcept;
