@@ -22,6 +22,8 @@ class Joypad final
 	/**
 	* 使用上の注意
 	* 必ず更新処理関数をどこかで呼び出さないといけない
+	* 
+	* Xinputを使用しているため、DxLibと競合が発生する
 	*/
 
 private:

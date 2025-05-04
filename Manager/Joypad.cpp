@@ -1,3 +1,12 @@
+/**
+ * @file   Joypad.cpp
+ *
+ * @brief  ジョイパッドの管理クラスのソースファイル
+ *
+ * @author CatCode
+ *
+ * @date   2025/05/04
+ */
 #include "Joypad.h"
 #include <cstring>
 
