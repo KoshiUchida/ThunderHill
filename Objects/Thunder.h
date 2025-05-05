@@ -19,6 +19,9 @@ private:
     // —‹‚Ì‹OÕ‚ğ•\¦‚·‚é‚©
     bool m_DrawThunderLine;
 
+    // “dŒ‚‚Ì”­‚µ‚Ä‚¢‚é•”•ª
+    Collisions::LinesCollider m_Line;
+
 public:
 	Thunder(const Position2D& spownPosition);
 	~Thunder();

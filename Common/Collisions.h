@@ -115,6 +115,7 @@ namespace Collisions
 		float      m_Range;
 
 	public:
+		CircleCollider() noexcept = default;
 		CircleCollider(const Position2D& position, float range);
 		~CircleCollider() = default;
 
@@ -167,6 +168,7 @@ namespace Collisions
 		CircleCollider m_ActiveCircle;
 
 	public:
+		LinesCollider() noexcept = default;
 		LinesCollider(const std::vector<Position2D>& positions) noexcept;
 		~LinesCollider() noexcept;
 

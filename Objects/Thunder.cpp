@@ -26,9 +26,7 @@ Thunder::Thunder(const Position2D& spownPosition) :
 {
 }
 
-Thunder::~Thunder()
-{
-}
+Thunder::~Thunder() = default;
 
 void Thunder::Initialize()
 {
@@ -37,6 +35,8 @@ void Thunder::Initialize()
     m_Time = 0;
 
     m_DrawThunderLine = false;
+
+    m_Line = Collisions::LinesCollider(m_Curves);
 }
 
 void Thunder::Update()
@@ -104,7 +104,7 @@ void Thunder::Collider()
     if (!player)
         return;
 
-    if (Collisions::Detection(player->GetCollider(), m_Fall))
+    if (Collisions::Detection(player->GetCollider(), m_Fall) || Collisions::Detection(m_Line, player->GetCollider()))
         SceneManager::GetInstance().RequestSceneChange("Result");
 }
 

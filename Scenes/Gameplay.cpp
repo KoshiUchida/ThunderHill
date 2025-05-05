@@ -48,7 +48,7 @@ void Gameplay::Initialize()
 	m_FontSize = p_wsi->GetWindowSetting().FontSize;
 	SetFontSize(m_FontSize);
 	m_OpeFontSize = m_FontSize - 1;
-	m_OpeStringPos = Position2D(p_wsi->ScreenLeft() + 5.f, p_wsi->ScreenBottom() - m_FontSize);
+	m_OpeStringPos = Position2D(static_cast<float>(p_wsi->ScreenLeft()) + 5.f, static_cast<float>(p_wsi->ScreenBottom() - m_FontSize));
 
 	// Object Set
 	ObjectManager& om{ ObjectManager::GetInstance() };

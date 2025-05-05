@@ -3,11 +3,12 @@
 #include "../Common/Colors.h"
 #include "../WindowSettingItems.h"
 
-static constexpr float Width{ 20.f };
+static constexpr float Width{ 18.f };
+static constexpr float Hight{ 18.f };
 
 Player::Player():
 	ObjectBace(Transform2D(Position2D(static_cast<float>(WSI::GetInstance().ScreenCenterX()), static_cast<float>(WSI::GetInstance().ScreenBottom() - 25)), 0.f)),
-	m_Collider(m_Transform.GetPosition(), Width, Width),
+	m_Collider(m_Transform.GetPosition(), Width, Hight),
 	p_Pad{ Joypad::GetInstance() },
 	m_MaxPosX{},
 	m_MinPosX{}
@@ -20,8 +21,8 @@ void Player::Initialize()
 {
 	WSI& wsi{ WSI::GetInstance() };
 
-	m_MaxPosX = wsi.ScreenRight();
-	m_MinPosX = wsi.ScreenLeft();
+	m_MaxPosX = static_cast<float>(wsi.ScreenRight());
+	m_MinPosX = static_cast<float>(wsi.ScreenLeft());
 }
 
 static constexpr float Speed{ 2.5f };

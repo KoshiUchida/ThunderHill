@@ -264,7 +264,7 @@ bool Collisions::Detection(LinesCollider& lines, const LineCollider& line)
 
 	std::vector<Position2D>* poses{ lines.GetPositionsPointer() };
 
-	int posesSize{ poses->size() };
+	int posesSize{ static_cast<int>(poses->size()) };
 
 	for (int i{ 1 }; i < posesSize; i++)
 	{
@@ -426,7 +426,7 @@ void Collisions::LinesCollider::CreateActiveCircle()
 	float sumX{};
 	float sumY{};
 
-	int posesSize{ m_Positions.size() };
+	int posesSize{ static_cast<int>(m_Positions.size()) };
 
 	float maxX{ m_Positions[0].x() };
 	float maxY{ m_Positions[0].y() };
@@ -453,7 +453,7 @@ void Collisions::LinesCollider::CreateActiveCircle()
 
 	Vector2D range{ Position2D(minX - maxX, minY - maxY) };
 
-	m_ActiveCircle.SetRange(range.range / 2.f);
+	m_ActiveCircle.SetRange(range.range * 2.f);
 }
 
 /// <summary>

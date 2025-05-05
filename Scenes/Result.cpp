@@ -49,7 +49,7 @@ void Result::Initialize()
 	m_GameOverStringFontSize = wsi.GetWindowSetting().FontSize + 10;
 	m_OpeFontSize = m_FontSize - 2;
 
-	m_OpeStringPos = Position2D(wsi.ScreenLeft() + 5.f, wsi.ScreenBottom() - m_FontSize);
+	m_OpeStringPos = Position2D(wsi.ScreenLeft() + 5.f, static_cast<float>(wsi.ScreenBottom() - m_FontSize));
 
 
 	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderRainBGM.ogg"), DX_PLAYTYPE_LOOP);
@@ -101,26 +101,26 @@ void Result::Render()
 {
 	SetFontSize(m_GameOverStringFontSize);
 
-	DrawString(m_ResultStringPos.x(), m_ResultStringPos.y(), ResultString, StringColor);
+	DrawString(static_cast<int>(m_ResultStringPos.x()), static_cast<int>(m_ResultStringPos.y()), ResultString, StringColor);
 
 	SetFontSize(m_OpeFontSize);
 
 	if (s_Joypad.IsConnected())
-		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpePadString, StringColor);
+		DrawString(static_cast<int>(m_OpeStringPos.x()), static_cast<int>(m_OpeStringPos.y()), OpePadString, StringColor);
 	else
-		DrawString(m_OpeStringPos.x(), m_OpeStringPos.y(), OpeKeyString, StringColor);
+		DrawString(static_cast<int>(m_OpeStringPos.x()), static_cast<int>(m_OpeStringPos.y()), OpeKeyString, StringColor);
 
 	SetFontSize(m_FontSize);
 
 	
 	if (m_Score.size())
 	{
-		DrawString(m_ScoreStringPos.x(), m_ScoreStringPos.y(), m_Score.c_str(), StringColor);
+		DrawString(static_cast<int>(m_ScoreStringPos.x()), static_cast<int>(m_ScoreStringPos.y()), m_Score.c_str(), StringColor);
 	}
 
 	if (m_High.size())
 	{
-		DrawString(m_ScoreStringPos.x() - 35.f, m_ScoreStringPos.y() - 10.f, m_High.c_str(), StringColor);
+		DrawString(static_cast<int>(m_ScoreStringPos.x() - 35.f), static_cast<int>(m_ScoreStringPos.y() - 10.f), m_High.c_str(), StringColor);
 	}
 
 #if defined(_DEBUG)
