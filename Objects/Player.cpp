@@ -57,7 +57,7 @@ void Player::Finalize()
 {
 }
 
-Collisions::BoxCollision& Player::GetCollider()
+Collisions::BoxCollider& Player::GetCollider()
 {
 	return m_Collider;
 }

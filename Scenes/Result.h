@@ -23,12 +23,13 @@ private:
 
 	bool m_Bottom;
 
-	Position2D m_GameOverStringPos;
+	Position2D m_ResultStringPos;
 	int m_FontSize;
 	int m_GameOverStringFontSize;
 
 	Position2D m_ScoreStringPos;
 	std::string m_Score;
+	std::string m_High;
 
 	Position2D m_OpeStringPos;
 	int m_OpeFontSize;

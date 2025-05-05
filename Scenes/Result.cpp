@@ -42,8 +42,8 @@ void Result::Initialize()
 {
 	WSI& wsi{ WSI::GetInstance() };
 
-	m_GameOverStringPos = Position2D(wsi.ScreenCenterX() - 40.f, wsi.ScreenCenterY() - 30.f);
-	m_ScoreStringPos = Position2D(wsi.ScreenCenterX() - 30.f, wsi.ScreenCenterY() + 30.f);
+	m_ResultStringPos = Position2D(wsi.ScreenCenterX() - 40.f, wsi.ScreenCenterY() - 30.f);
+	m_ScoreStringPos = Position2D(wsi.ScreenCenterX() - 35.f, wsi.ScreenCenterY() + 30.f);
 
 	m_FontSize = wsi.GetWindowSetting().FontSize;
 	m_GameOverStringFontSize = wsi.GetWindowSetting().FontSize + 10;
@@ -64,6 +64,12 @@ void Result::Initialize()
 		m_Score = "Score : " + m_Score;
 	}
 
+	m_High = p_sd.GetShareData("High");
+
+	if (m_High.size())
+	{
+		m_High = "High score : " + m_High;
+	}
 
 	m_Bottom = false;
 }
@@ -95,7 +101,7 @@ void Result::Render()
 {
 	SetFontSize(m_GameOverStringFontSize);
 
-	DrawString(m_GameOverStringPos.x(), m_GameOverStringPos.y(), ResultString, StringColor);
+	DrawString(m_ResultStringPos.x(), m_ResultStringPos.y(), ResultString, StringColor);
 
 	SetFontSize(m_OpeFontSize);
 
@@ -110,6 +116,11 @@ void Result::Render()
 	if (m_Score.size())
 	{
 		DrawString(m_ScoreStringPos.x(), m_ScoreStringPos.y(), m_Score.c_str(), StringColor);
+	}
+
+	if (m_High.size())
+	{
+		DrawString(m_ScoreStringPos.x() - 35.f, m_ScoreStringPos.y() - 10.f, m_High.c_str(), StringColor);
 	}
 
 #if defined(_DEBUG)

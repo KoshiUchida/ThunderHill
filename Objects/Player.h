@@ -7,7 +7,7 @@ class Player final:
     public ObjectBace
 {
 private:
-	Collisions::BoxCollision m_Collider;
+	Collisions::BoxCollider m_Collider;
 
 	Joypad& p_Pad;
 
@@ -22,6 +22,6 @@ public:
 	void Render(const Camera& camera) override;
 	void Finalize() override;
 
-	Collisions::BoxCollision& GetCollider();
+	Collisions::BoxCollider& GetCollider();
 };
 

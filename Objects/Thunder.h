@@ -11,7 +11,7 @@ private:
 	std::vector<Position2D> m_Curves;
 
     // —Ž‚¿‚½’n“_
-    Collisions::BoxCollision m_Fall;
+    Collisions::BoxCollider m_Fall;
 
     // Œo‰ßŽžŠÔ
     int m_Time;
