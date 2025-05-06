@@ -5,9 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Managers">
-      <UniqueIdentifier>{a41e8567-e8af-4a6a-966d-c30abe2e3840}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common">
       <UniqueIdentifier>{75fd214f-622e-4681-b649-f32c55dbbac8}</UniqueIdentifier>
     </Filter>
@@ -17,13 +14,16 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{7158c54d-2a5e-4b84-8499-449b62a4b8a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects\Managers">
+      <UniqueIdentifier>{a41e8567-e8af-4a6a-966d-c30abe2e3840}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
     <ClInclude Include="WindowSettingItems.h" />
     <ClInclude Include="WinMain.h" />
     <ClInclude Include="Manager\AnimationManager.h">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Common\Animation2D.h">
       <Filter>Common</Filter>
@@ -53,16 +53,16 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Manager\ObjectManager.h">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\SceneBace.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Manager\SceneManager.h">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Manager\ResourceManager.h">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\Title.h">
       <Filter>Scenes</Filter>
@@ -77,10 +77,10 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Manager\Joypad.h">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Manager\ShareData.h">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Objects\Player.h">
       <Filter>Objects</Filter>
@@ -108,7 +108,7 @@
     <ClCompile Include="WindowSettingItems.cpp" />
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="Manager\AnimationManager.cpp">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Common\Animation2D.cpp">
       <Filter>Common</Filter>
@@ -135,16 +135,16 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Manager\ObjectManager.cpp">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\SceneBace.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Manager\ResourceManager.cpp">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Manager\SceneManager.cpp">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\Title.cpp">
       <Filter>Scenes</Filter>
@@ -159,10 +159,10 @@
       <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="Manager\Joypad.cpp">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Manager\ShareData.cpp">
-      <Filter>Managers</Filter>
+      <Filter>Objects\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Player.cpp">
       <Filter>Objects</Filter>

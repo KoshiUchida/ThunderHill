@@ -2,6 +2,7 @@
 #include <DxLib.h>
 #include "../Common/Colors.h"
 #include "../WindowSettingItems.h"
+#include "../Manager/ResourceManager.h"
 
 static constexpr float Width{ 18.f };
 static constexpr float Hight{ 18.f };
@@ -25,7 +26,8 @@ Player::Player():
 	m_CanJump{},
 	m_IsJumping{},
 	m_Under{},
-	m_Gravity{ MaxGravity, AccGravity, StoGravity }
+	m_Gravity{ MaxGravity, AccGravity, StoGravity },
+	m_JumpSE{}
 {
 }
 
@@ -41,6 +43,10 @@ void Player::Initialize()
 	m_CanJump = true;
 
 	m_Under = m_Transform.GetPositionY();
+
+	ResourceManager& rm{ ResourceManager::GetInstance() };
+
+	m_JumpSE = rm.RequestSound("JumpSE.wav");
 }
 
 void Player::Update()
@@ -90,6 +96,8 @@ void Player::Jump()
 		m_CanJump = false;
 		m_IsJumping = true;
 		m_Gravity.Stop();
+		
+		PlaySoundMem(m_JumpSE, DX_PLAYTYPE_BACK);
 	}
 
 	if (!m_IsJumping)

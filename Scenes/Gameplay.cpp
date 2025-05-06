@@ -66,7 +66,7 @@ void Gameplay::Update()
 
 static constexpr unsigned int StringColor{ Colors::White };
 static constexpr char OpePadString[] = { "Move:L-Stick" };
-static constexpr char OpeKeyString[] = { "Move:©¨" };
+static constexpr char OpeKeyString[] = { "Move:©¨ Jump:ª" };
 
 /// <summary>
 /// •`‰æˆ—

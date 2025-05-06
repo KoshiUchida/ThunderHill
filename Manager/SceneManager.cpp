@@ -96,7 +96,7 @@ void SceneManager::SetScene()
 
 	// 開始シーンの設定
 #if defined(_DEBUG)
-	SetStartScene("Title");
+	SetStartScene("Gameplay");
 #else
 	SetStartScene("Logo");
 #endif

@@ -24,6 +24,9 @@ private:
 
 	Speed m_Gravity;
 
+	/*Sound*/
+	int m_JumpSE;
+
 public:
 	Player();
 	~Player();
