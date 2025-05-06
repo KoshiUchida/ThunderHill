@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Arrow.h" />
     <ClInclude Include="Common\CCRandom.h" />
     <ClInclude Include="Common\Animation2D.h" />
     <ClInclude Include="Common\Camera.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="WinMain.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\Arrow.cpp" />
     <ClCompile Include="Common\CCRandom.cpp" />
     <ClCompile Include="Common\Animation2D.cpp" />
     <ClCompile Include="Common\Camera.cpp" />

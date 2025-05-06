@@ -246,6 +246,8 @@ namespace Collisions
 	/// </summary>
 	bool Detection(LinesCollider& lines, const BoxCollider& box);
 	
+	bool IsCrossing(const Position2D& a1, const Position2D& a2, const Position2D& b1, const Position2D& b2);
+
 	/// <summary>
 	/// BoxCollision“¯m‚ÌÚG•Ó
 	/// </summary>

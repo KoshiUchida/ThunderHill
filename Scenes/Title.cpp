@@ -13,6 +13,7 @@
 #include <DxLib.h>
 #include "../WindowSettingItems.h"
 
+#include "../Manager/ObjectManager.h"
 #include "../Manager/ResourceManager.h"
 #include "../Common/Colors.h"
 
@@ -27,7 +28,8 @@ Title::Title() :
 	m_FontSize{},
 	m_TitleFontSize{},
 	m_Bottom{},
-	m_OpeFontSize{}
+	m_OpeFontSize{},
+	p_ArrowObject{ nullptr }
 {
 }
 
@@ -55,6 +57,12 @@ void Title::Initialize()
 
 	m_Bottom = false;
 
+	ObjectManager& om{ ObjectManager::GetInstance() };
+
+	om.AddObject("Arrow", make_unique<Arrow>());
+
+	p_ArrowObject = static_cast<Arrow*>(om.GetObjectPtr("Arrow"));
+
 	PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderRainBGM.ogg"), DX_PLAYTYPE_LOOP);
 }
 
@@ -68,17 +76,22 @@ void Title::Update()
 
 	if (m_Bottom && p_Joypad.IsPressed(XINPUT_GAMEPAD_A))
 	{
-		PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.ogg"), DX_PLAYTYPE_BACK);
-		ChangeScene("Gameplay");
+		PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.wav"), DX_PLAYTYPE_BACK);
+		
+		if (p_ArrowObject->GetIndex() == 0)
+			ChangeScene("Gameplay");
+		else
+			ChangeScene("End");
 	}
 }
 
 static constexpr char StartString[] = { "Start" };
 static constexpr unsigned int StartStringColor{ Colors::White };
+static constexpr char EndString[] = { "End" };
 static constexpr char TitleString[] = { "THUNDER HILL" };
 static constexpr unsigned int TitleStringColor{ Colors::LightBlue };
-static constexpr char OpePadString[] = { "Select:A" };
-static constexpr char OpeKeyString[] = { "Select:Z" };
+static constexpr char OpePadString[] = { "Move:L-Stick Select:A" };
+static constexpr char OpeKeyString[] = { "Move:Å™Å´ Select:Z" };
 
 /// <summary>
 /// ï`âÊèàóù
@@ -99,6 +112,8 @@ void Title::Render()
 	SetFontSize(m_FontSize);
 
 	DrawString(m_StartStringPos.x(), m_StartStringPos.y(), StartString, StartStringColor);
+
+	DrawString(m_StartStringPos.x(), m_StartStringPos.y() + 15.f, EndString, StartStringColor);
 }
 
 /// <summary>

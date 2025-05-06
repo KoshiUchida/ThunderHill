@@ -12,10 +12,9 @@
 #include "SceneBace.h"
 
 #include <memory>
-
 #include "../Common/Sprite2D.h"
-
 #include "../Manager/Joypad.h"
+#include "../Objects/Arrow.h"
 
 /// <summary>
 /// タイトルシーン
@@ -35,6 +34,8 @@ private:
 	Joypad& p_Joypad;
 
 	bool m_Bottom;
+
+	Arrow* p_ArrowObject;
 
 public:
 	// メインシステム

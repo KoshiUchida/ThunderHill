@@ -100,6 +100,9 @@
     <ClInclude Include="Objects\TimeLimitUI.h">
       <Filter>Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Objects\Arrow.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowSettingItems.cpp" />
@@ -177,6 +180,9 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Objects\TimeLimitUI.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Arrow.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>

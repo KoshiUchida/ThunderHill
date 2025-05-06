@@ -236,42 +236,26 @@ bool Collisions::Detection(const CircleCollider& circle1, const CircleCollider& 
 
 bool Collisions::Detection(const LineCollider& line1, const LineCollider& line2)
 {
-	// 衝突範囲の計算
-	Box box { line1.GetLine() };
-	Box box2{ line2.GetLine() };
-	float b2_width = (box2.right - box2.left) / 2.f;
-	float b2_height = (box2.bottom - box2.top) / 2.f;
-	box.left -= b2_width;
-	box.right += b2_width;
-	box.top -= b2_height;
-	box.bottom += b2_height;
-
-	// 対象の座標を取得
-	Position2D b2_point = line2.GetEndPosition() - line2.GetStartPosition();
-
-	// 調べる
-	return b2_point.x() >= box.left && b2_point.x() <= box.right &&
-	       b2_point.y() >= box.top  && b2_point.y() <= box.bottom;
+	return IsCrossing(line1.GetStartPosition(), line1.GetEndPosition(),
+		line2.GetStartPosition(), line2.GetEndPosition());
 }
 
 bool Collisions::Detection(LinesCollider& lines, const LineCollider& line)
 {
-	CircleCollider circle{ lines.GetActiveCircle() };
+	const CircleCollider& circle = lines.GetActiveCircle();
+	const Position2D& circlePos = circle.GetPosition();
+	float radius = circle.GetRange();
 
-	if (!Detection(circle.GetPosition(), circle.GetRange(), Position2D(line.GetStartPosition())) ||
-		!Detection(circle.GetPosition(), circle.GetRange(), Position2D(line.GetEndPosition())))
+	// ActiveCircleの外接で早期リターン
+	if (!Detection(circlePos, radius, line.GetStartPosition()) &&
+		!Detection(circlePos, radius, line.GetEndPosition())) {
 		return false;
+	}
 
-	std::vector<Position2D>* poses{ lines.GetPositionsPointer() };
-
-	int posesSize{ static_cast<int>(poses->size()) };
-
-	for (int i{ 1 }; i < posesSize; i++)
-	{
-		LineCollider posesLine{ (*poses)[i - 1], (*poses)[i] };
-
-		if (Detection(line, posesLine))
-			return true;
+	const std::vector<Position2D>& poses = lines.GetPositions();
+	for (size_t i = 1; i < poses.size(); ++i) {
+		LineCollider lc(poses[i - 1], poses[i]);
+		if (Detection(line, lc)) return true;
 	}
 
 	return false;
@@ -279,25 +263,46 @@ bool Collisions::Detection(LinesCollider& lines, const LineCollider& line)
 
 bool Collisions::Detection(LinesCollider& lines, const BoxCollider& box)
 {
-	if (!Detection(lines.GetActiveCircle(), box))
-		return false;
+	if (!Detection(lines.GetActiveCircle(), box)) return false;
 
-	Box boxl = box.GetBox();
+	const Box& b = box.GetBox();
 
-	if (Detection(lines, LineCollider(Position2D(boxl.left, boxl.top), Position2D(boxl.right, boxl.bottom))))
-		return true;
-	if (Detection(lines, LineCollider(Position2D(boxl.left, boxl.bottom), Position2D(boxl.right, boxl.top))))
-		return true;
-	if (Detection(lines, LineCollider(Position2D(boxl.left, boxl.top), Position2D(boxl.left, boxl.bottom))))
-		return true;
-	if (Detection(lines, LineCollider(Position2D(boxl.right, boxl.top), Position2D(boxl.right, boxl.bottom))))
-		return true;
-	if (Detection(lines, LineCollider(Position2D(boxl.left, boxl.top), Position2D(boxl.right, boxl.top))))
-		return true;
-	if (Detection(lines, LineCollider(Position2D(boxl.left, boxl.bottom), Position2D(boxl.right, boxl.bottom))))
-		return true;
+	const Position2D topLeft(b.left, b.top);
+	const Position2D topRight(b.right, b.top);
+	const Position2D bottomLeft(b.left, b.bottom);
+	const Position2D bottomRight(b.right, b.bottom);
+
+	LineCollider edges[] = {
+		{ topLeft, topRight },
+		{ topRight, bottomRight },
+		{ bottomRight, bottomLeft },
+		{ bottomLeft, topLeft }
+	};
+
+	for (const auto& edge : edges) {
+		if (Detection(lines, edge)) return true;
+	}
 
 	return false;
+}
+
+bool Collisions::IsCrossing(const Position2D& a1, const Position2D& a2, const Position2D& b1, const Position2D& b2)
+{
+	Vector2D A = a2 - a1;
+	Vector2D B1 = b1 - a1;
+	Vector2D B2 = b2 - a1;
+
+	float cross1 = A.Cross(B1);
+	float cross2 = A.Cross(B2);
+
+	Vector2D C = b2 - b1;
+	Vector2D C1 = a1 - b1;
+	Vector2D C2 = a2 - b1;
+
+	float cross3 = C.Cross(C1);
+	float cross4 = C.Cross(C2);
+
+	return (cross1 * cross2 < 0) && (cross3 * cross4 < 0);
 }
 
 Collisions::BoxCollider::TOUCH_AREA Collisions::DetectionTouchArea(const BoxCollider& box1, const BoxCollider& box2)
