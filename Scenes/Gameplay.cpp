@@ -20,7 +20,7 @@
 #include "../Objects/Player.h"
 #include "../Objects/ThunderGenerater.h"
 #include "../Objects/TimeLimitUI.h"
-#include "../Objects/FlyingDebris.h"
+#include "../Objects/FlyingDebrisGenerater.h"
 
 using namespace std;
 
@@ -56,7 +56,7 @@ void Gameplay::Initialize()
 	om.AddObject("Player"      , make_unique<Player>());
 	om.AddObject("Generater"   , make_unique<ThunderGenerater>());
 	om.AddObject("TimeLimitUI" , make_unique<TimeLimitUI>());
-	om.AddObject("FlyingDebris", make_unique<FlyingDebris>());
+	om.AddObject("FlyingDebris", make_unique<FlyingDebrisGenerater>());
 }
 
 /// <summary>
