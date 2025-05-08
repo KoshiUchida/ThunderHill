@@ -30,6 +30,8 @@ private:
 
 	int m_RainBGM;
 
+	ObjectBace* p_Player;
+
 public:
     ThunderGenerater();
     ~ThunderGenerater();

@@ -4,8 +4,8 @@
 #include "../WindowSettingItems.h"
 #include "../Manager/ResourceManager.h"
 
-static constexpr float Width{ 18.f };
-static constexpr float Hight{ 18.f };
+static constexpr float Width{ 13.f };
+static constexpr float Hight{ Width };
 
 static constexpr float MaxSpeed{ 2.5f };
 static constexpr float AccSpeed{ 0.3f };

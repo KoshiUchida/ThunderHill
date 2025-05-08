@@ -84,7 +84,7 @@ void Result::Update()
 
 	if (m_Bottom && s_Joypad.IsPressed(XINPUT_GAMEPAD_A))
 	{
-		PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.ogg"), DX_PLAYTYPE_BACK);
+		PlaySoundMem(ResourceManager::GetInstance().RequestSound("ClickSE.wav"), DX_PLAYTYPE_BACK);
 		ChangeScene("Title");
 	}
 }
