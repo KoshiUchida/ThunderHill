@@ -13,7 +13,7 @@ static constexpr float StoSpeed{ 1.2f };
 
 static constexpr float JumpPower{ -5.f };
 static constexpr float MaxGravity{ -JumpPower * 2.f };
-static constexpr float AccGravity{ 0.5f };
+static constexpr float AccGravity{ 0.35f };
 static constexpr float StoGravity{ MaxGravity };
 
 Player::Player():

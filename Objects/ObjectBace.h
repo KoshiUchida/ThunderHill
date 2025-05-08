@@ -38,6 +38,8 @@ public:
 	virtual void Render(const Camera& camera) = 0;
 	virtual void Finalize()                   = 0;
 
+	void Destroy() { m_IsDestroy = true; }
+
 	/*Getter*/
 	Position2D GetPosition() const { return m_Transform.GetPosition(); }
 	Position2D GetPosition(const Camera& camera);

@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\FlyingDebrisGenerater.h" />
+    <ClInclude Include="Objects\FlyingDebris.h" />
     <ClInclude Include="Objects\Arrow.h" />
     <ClInclude Include="Common\CCRandom.h" />
     <ClInclude Include="Common\Animation2D.h" />
@@ -159,6 +161,8 @@
     <ClInclude Include="WinMain.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\FlyingDebrisGenerater.cpp" />
+    <ClCompile Include="Objects\FlyingDebris.cpp" />
     <ClCompile Include="Objects\Arrow.cpp" />
     <ClCompile Include="Common\CCRandom.cpp" />
     <ClCompile Include="Common\Animation2D.cpp" />

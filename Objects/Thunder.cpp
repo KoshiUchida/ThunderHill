@@ -48,7 +48,7 @@ void Thunder::Update()
         m_DrawThunderLine = true;
         PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderSE" + to_string(CCRandom::GetInstane().Rand(0, 2)) + ".ogg"), DX_PLAYTYPE_BACK);
     }
-    else if (m_Time >= 150)
+    else if (m_Time >= 125)
     {
         m_IsDestroy = true;
     }
@@ -61,7 +61,7 @@ void Thunder::Update()
 
 static constexpr float NoneDraw{ 1.5f };
 static constexpr float CurveExRate{ 0.35f };
-static constexpr unsigned int ThunderColor{ Colors::LightBlue };
+static constexpr unsigned int ThunderColor{ Colors::Yellow };
 
 void Thunder::Render(const Camera& camera)
 {

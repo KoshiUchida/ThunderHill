@@ -5,13 +5,13 @@
  *
  * @author CatCode
  *
- * @date   2024/01/10
+ * @date   2025/05/08
  */
 
 #include "Sprite2D.h"
 
 #include <DxLib.h>
-#include "../Common/Camera.h"
+#include "Camera.h"
 
 /// <summary>
 /// コンストラクタ

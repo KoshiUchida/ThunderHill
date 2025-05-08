@@ -87,8 +87,9 @@ namespace Collisions
 			RIGHT
 		};
 
-		BoxCollider(const Position2D& position, float width, float height);
-		~BoxCollider() = default;
+		BoxCollider(float width, float height) noexcept;
+		BoxCollider(const Position2D& position, float width, float height) noexcept;
+		~BoxCollider() noexcept;
 		bool Handling(const BoxCollider& _collider);
 
 		// Setter

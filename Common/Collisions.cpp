@@ -17,7 +17,22 @@
 /// <summary>
 /// コンストラクタ
 /// </summary>
-Collisions::BoxCollider::BoxCollider(const Position2D& position, float width, float height)
+Collisions::BoxCollider::BoxCollider(float width, float height) noexcept :
+	m_Position{},
+	m_Width{ width },
+	m_Height{ height },
+	m_Box{}
+{
+	m_Box.left = m_Position.x() - (m_Width / 2.f);
+	m_Box.right = m_Position.x() + (m_Width / 2.f);
+	m_Box.top = m_Position.y() - (m_Height / 2.f);
+	m_Box.bottom = m_Position.y() + (m_Height / 2.f);
+}
+
+/// <summary>
+/// コンストラクタ
+/// </summary>
+Collisions::BoxCollider::BoxCollider(const Position2D& position, float width, float height) noexcept
 	: m_Position { position }
 	, m_Width { width }
 	, m_Height{ height }
@@ -28,6 +43,8 @@ Collisions::BoxCollider::BoxCollider(const Position2D& position, float width, fl
 	m_Box.top    = m_Position.y() - (m_Height / 2.f);
 	m_Box.bottom = m_Position.y() + (m_Height / 2.f);
 }
+
+Collisions::BoxCollider::~BoxCollider() noexcept = default;
 
 bool Collisions::BoxCollider::Handling(const BoxCollider& _collider)
 {

@@ -20,6 +20,7 @@
 #include "../Objects/Player.h"
 #include "../Objects/ThunderGenerater.h"
 #include "../Objects/TimeLimitUI.h"
+#include "../Objects/FlyingDebris.h"
 
 using namespace std;
 
@@ -52,9 +53,10 @@ void Gameplay::Initialize()
 
 	// Object Set
 	ObjectManager& om{ ObjectManager::GetInstance() };
-	om.AddObject("Player", make_unique<Player>());
-	om.AddObject("Generater", make_unique<ThunderGenerater>());
-	om.AddObject("TimeLimitUI", make_unique<TimeLimitUI>());
+	om.AddObject("Player"      , make_unique<Player>());
+	om.AddObject("Generater"   , make_unique<ThunderGenerater>());
+	om.AddObject("TimeLimitUI" , make_unique<TimeLimitUI>());
+	om.AddObject("FlyingDebris", make_unique<FlyingDebris>());
 }
 
 /// <summary>

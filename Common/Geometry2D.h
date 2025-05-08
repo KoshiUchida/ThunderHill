@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/01/12
+ * @date   2025/05/05
  */
 
 #pragma once
@@ -160,5 +160,6 @@ public:
 	/*Addtion*/
 	void AddPositionX(const float& _x) { this->m_position += Position2D(_x, 0.f); }
 	void AddPositionY(const float& _y) { this->m_position += Position2D(0.f, _y); }
+	void AddRotate(const float& _deg) { this->m_angle += _deg; }
 };
 

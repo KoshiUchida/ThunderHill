@@ -103,6 +103,8 @@
     <ClInclude Include="Objects\Arrow.h">
       <Filter>Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Objects\FlyingDebris.h" />
+    <ClInclude Include="Objects\FlyingDebrisGenerater.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowSettingItems.cpp" />
@@ -185,6 +187,8 @@
     <ClCompile Include="Objects\Arrow.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Objects\FlyingDebris.cpp" />
+    <ClCompile Include="Objects\FlyingDebrisGenerater.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">

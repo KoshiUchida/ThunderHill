@@ -80,7 +80,7 @@ void ThunderGenerater::Update()
 	{
 		m_RainPositions[i] += Position2D(-6.f, 10.f);
 
-		if (m_RainPositions[i].y() > m_Height)
+		if (m_RainPositions[i].y() > m_Height - p_ccr.Rand(5, 25))
 		{
 			m_RainPositions.erase(m_RainPositions.begin() + i);
 			i--;
