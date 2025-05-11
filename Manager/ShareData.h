@@ -5,9 +5,8 @@
  *
  * @author CatCode
  *
- * @date   2025/04/27
+ * @date   2025/05/11
  */
-
 #pragma once
 #include <memory>
 #include <unordered_map>
@@ -16,21 +15,20 @@
 class ShareData final
 {
 private:
-	static std::unique_ptr<ShareData> s_ShareData;
-
-public:
-	static ShareData& GetInstance();
-
-private:
-	std::unordered_map<std::string, std::string> m_shareData;
+	static std::unique_ptr<ShareData> s_Instance;
+	std::unordered_map<std::string, std::string> m_Data;
 
 	ShareData();
+
 public:
 	~ShareData();
 
-	// 共有データの取得
-	std::string GetShareData(const std::string& key) const;
+	static ShareData& GetInstance();
 
-	// 共有データの設定
-	void SetSharedData(const std::string& key, const std::string& value);
+	std::string Get(const std::string& key) const;
+	void Set(const std::string& key, const std::string& value);
+
+	bool HasKey(const std::string& key) const{
+		return m_Data.find(key) != m_Data.end();
+	}
 };

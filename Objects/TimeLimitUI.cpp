@@ -57,19 +57,19 @@ void TimeLimitUI::Finalize()
 {
 	ShareData& p_sd{ ShareData::GetInstance() };
 
-	std::string data = p_sd.GetShareData("High");
+	std::string data = p_sd.Get("High");
 
 	if (data.size())
 	{
 		int datar = std::stoi(data, nullptr);
 
 		if (datar < m_LiveTime)
-			p_sd.SetSharedData("High", std::to_string(m_LiveTime));
+			p_sd.Set("High", std::to_string(m_LiveTime));
 	}
 	else
-		p_sd.SetSharedData("High", std::to_string(m_LiveTime));
+		p_sd.Set("High", std::to_string(m_LiveTime));
 
-	p_sd.SetSharedData("Score", std::to_string(m_LiveTime));
+	p_sd.Set("Score", std::to_string(m_LiveTime));
 
 }
 

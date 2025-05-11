@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2025/04/27
+ * @date   2025/05/11
  */
 
 #include "ObjectManager.h"
@@ -30,18 +30,12 @@ ObjectManager& ObjectManager::GetInstance()
 /// <summary>
 /// Constructor
 /// </summary>
-ObjectManager::ObjectManager()
-	: m_MaxLayer{}
-{
-}
+ObjectManager::ObjectManager() = default;
 
 /// <summary>
 /// Destructor
 /// </summary>
-ObjectManager::~ObjectManager()
-{
-	Finalize();
-}
+ObjectManager::~ObjectManager() = default;
 
 /// <summary>
 /// ‰Šú‰»ˆ—

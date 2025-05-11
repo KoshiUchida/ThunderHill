@@ -5,7 +5,7 @@
  *
  * @author CatCode
  *
- * @date   2024/05/04
+ * @date   2024/05/11
  */
 
 #include "SceneManager.h"
@@ -44,11 +44,7 @@ SceneManager::SceneManager() = default;
 /// <summary>
 /// デストラクタ
 /// </summary>
-SceneManager::~SceneManager()
-{
-	if (m_pCurrentScene)
-		m_pCurrentScene->Finalize();
-}
+SceneManager::~SceneManager() = default;
 
 /// <summary>
 /// 更新処理
@@ -119,6 +115,9 @@ void SceneManager::RequestSceneChange(const std::string& changeSceneName)
 {
 	if (changeSceneName == "End")
 	{
+		if (m_pCurrentScene)
+			m_pCurrentScene->Finalize();
+		p_ObjectManager->Finalize();
 		m_IsEnd = true;
 		return;
 	}

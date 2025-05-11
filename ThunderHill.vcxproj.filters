@@ -14,7 +14,7 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{7158c54d-2a5e-4b84-8499-449b62a4b8a6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects\Managers">
+    <Filter Include="Managers">
       <UniqueIdentifier>{a41e8567-e8af-4a6a-966d-c30abe2e3840}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -23,7 +23,7 @@
     <ClInclude Include="WindowSettingItems.h" />
     <ClInclude Include="WinMain.h" />
     <ClInclude Include="Manager\AnimationManager.h">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Common\Animation2D.h">
       <Filter>Common</Filter>
@@ -53,16 +53,16 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Manager\ObjectManager.h">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\SceneBace.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Manager\SceneManager.h">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Manager\ResourceManager.h">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\Title.h">
       <Filter>Scenes</Filter>
@@ -77,10 +77,10 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Manager\Joypad.h">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Manager\ShareData.h">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Objects\Player.h">
       <Filter>Objects</Filter>
@@ -103,15 +103,21 @@
     <ClInclude Include="Objects\Arrow.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\FlyingDebris.h" />
-    <ClInclude Include="Objects\FlyingDebrisGenerater.h" />
-    <ClInclude Include="Objects\TimeUp.h" />
+    <ClInclude Include="Objects\FlyingDebris.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\TimeUp.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\FlyingDebrisGenerater.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowSettingItems.cpp" />
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="Manager\AnimationManager.cpp">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Common\Animation2D.cpp">
       <Filter>Common</Filter>
@@ -138,16 +144,16 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Manager\ObjectManager.cpp">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\SceneBace.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Manager\ResourceManager.cpp">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Manager\SceneManager.cpp">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\Title.cpp">
       <Filter>Scenes</Filter>
@@ -162,10 +168,10 @@
       <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="Manager\Joypad.cpp">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Manager\ShareData.cpp">
-      <Filter>Objects\Managers</Filter>
+      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Player.cpp">
       <Filter>Objects</Filter>
@@ -188,9 +194,15 @@
     <ClCompile Include="Objects\Arrow.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\FlyingDebris.cpp" />
-    <ClCompile Include="Objects\FlyingDebrisGenerater.cpp" />
-    <ClCompile Include="Objects\TimeUp.cpp" />
+    <ClCompile Include="Objects\FlyingDebris.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\TimeUp.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\FlyingDebrisGenerater.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">

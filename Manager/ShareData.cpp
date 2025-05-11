@@ -5,38 +5,35 @@
  *
  * @author CatCode
  *
- * @date   2025/04/27
+ * @date   2025/05/11
  */
 
 #include "ShareData.h"
 
-std::unique_ptr<ShareData> ShareData::s_ShareData = nullptr;
+std::unique_ptr<ShareData> ShareData::s_Instance = nullptr;
 
 ShareData& ShareData::GetInstance()
 {
-	if (!s_ShareData)
-		s_ShareData.reset(new ShareData);
+	if (!s_Instance)
+		s_Instance.reset(new ShareData);
 
-	return *s_ShareData.get();
+	return *s_Instance.get();
 }
 
 ShareData::ShareData() = default;
 
 ShareData::~ShareData() = default;
 
-std::string ShareData::GetShareData(const std::string& key) const
+std::string ShareData::Get(const std::string& key) const
 {
-	// TODO : ゲーム終了時（おそらく）にハッシュ関係のバグ有り、修正案模索
-	if (m_shareData.empty() || m_shareData.count(key) == 0)
-	{
-		// TODO:ERROR
+	auto it = m_Data.find(key);
+	if (it == m_Data.end())
 		return std::string();
-	}
 
-	return m_shareData.at(key);
+	return it->second;
 }
 
-void ShareData::SetSharedData(const std::string& key, const std::string& value)
+void ShareData::Set(const std::string& key, const std::string& value)
 {
-	m_shareData[key] = value;
+	m_Data[key] = value;
 }

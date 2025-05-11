@@ -57,17 +57,17 @@ void Result::Initialize()
 
 	ShareData& p_sd{ ShareData::GetInstance() };
 
-	m_Score = p_sd.GetShareData("Score");
-
-	if (m_Score.size())
+	if (p_sd.HasKey("Score"))
 	{
+		m_Score = p_sd.Get("Score");
+
 		m_Score = "Score : " + m_Score;
 	}
 
-	m_High = p_sd.GetShareData("High");
-
-	if (m_High.size())
+	if (p_sd.HasKey("High"))
 	{
+		m_High = p_sd.Get("High");
+
 		m_High = "High score : " + m_High;
 	}
 
