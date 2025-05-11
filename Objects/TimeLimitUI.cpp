@@ -1,8 +1,19 @@
+/**
+ * @file   TimeLimitUI.cpp
+ *
+ * @brief  残り時間表示UIのソースファイル
+ *
+ * @author CatCode
+ *
+ * @date   2025/05/11
+ */
 #include "TimeLimitUI.h"
-#include "../Manager/SceneManager.h"
+
 #include "DxLib.h"
 #include <string>
 #include "../Common/Colors.h"
+
+#include "../Manager/SceneManager.h"
 #include "../Manager/ShareData.h"
 
 TimeLimitUI::TimeLimitUI() noexcept :
@@ -60,4 +71,9 @@ void TimeLimitUI::Finalize()
 
 	p_sd.SetSharedData("Score", std::to_string(m_LiveTime));
 
+}
+
+void TimeLimitUI::AddTime(int time)
+{
+	m_Time += time;
 }

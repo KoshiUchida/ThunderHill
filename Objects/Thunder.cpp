@@ -1,23 +1,36 @@
+/**
+ * @file   Thunder.cpp
+ *
+ * @brief  雷オブジェクトのソースファイル
+ *
+ * @author CatCode
+ *
+ * @date   2025/05/11
+ */
 #include "Thunder.h"
+
 #include <DxLib.h>
 #include "../Common/Colors.h"
-#include "../Common/CCRandom.h"
+
 #include "../WindowSettingItems.h"
-
+#include "../Common/CCRandom.h"
 #include "../Manager/ObjectManager.h"
-#include "Player.h"
-
 #include "../Manager/SceneManager.h"
-
 #include "../Manager/ResourceManager.h"
 
-#include "../Common/CCRandom.h"
+#include "Player.h"
+#include "TimeUp.h"
 
 using namespace std;
+
+int Thunder::s_Count{ 0 };
 
 static constexpr int   Thickness{ 5 };
 static constexpr float FallExRate{ 1.1f };
 
+/// <summary>
+/// コンストラクタ
+/// </summary>
 Thunder::Thunder(const Position2D& spownPosition) :
 	ObjectBace(Transform2D(spownPosition, 0.f)),
     m_Time{},
@@ -26,8 +39,14 @@ Thunder::Thunder(const Position2D& spownPosition) :
 {
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Thunder::~Thunder() = default;
 
+/// <summary>
+/// 初期化処理
+/// </summary>
 void Thunder::Initialize()
 {
     Simulate();
@@ -39,6 +58,9 @@ void Thunder::Initialize()
     m_Line = Collisions::LinesCollider(m_Curves);
 }
 
+/// <summary>
+/// 更新処理
+/// </summary>
 void Thunder::Update()
 {
     m_Time++;
@@ -46,7 +68,7 @@ void Thunder::Update()
     if (m_Time == 100)
     {
         m_DrawThunderLine = true;
-        PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderSE" + to_string(CCRandom::GetInstane().Rand(0, 2)) + ".ogg"), DX_PLAYTYPE_BACK);
+        PlaySoundMem(ResourceManager::GetInstance().RequestSound("ThunderSE" + to_string(CCRandom::GetInstane().Rand(0, 1)) + ".wav"), DX_PLAYTYPE_BACK);
     }
     else if (m_Time >= 125)
     {
@@ -63,6 +85,9 @@ static constexpr float NoneDraw{ 1.5f };
 static constexpr float CurveExRate{ 0.35f };
 static constexpr unsigned int ThunderColor{ Colors::Yellow };
 
+/// <summary>
+/// 描画処理
+/// </summary>
 void Thunder::Render(const Camera& camera)
 {
     if (m_DrawThunderLine && m_Time % 3)
@@ -92,10 +117,25 @@ void Thunder::Render(const Camera& camera)
     }
 }
 
+static constexpr int MaxCount{ 100 };
+static constexpr int ItemPopRand{ 4 };
+
+/// <summary>
+/// 終了処理
+/// </summary>
 void Thunder::Finalize()
 {
+    if (CCRandom::GetInstane().Rand(0, ItemPopRand))
+        return;
+
+    ObjectManager::GetInstance().AddObject("TimeUp" + to_string(s_Count++), make_unique<TimeUp>(m_Fall.GetPosition()));
+    if (s_Count > MaxCount)
+        s_Count = 0;
 }
 
+/// <summary>
+/// 重なり処理
+/// </summary>
 void Thunder::Collider()
 {
     ObjectManager& om{ ObjectManager::GetInstance() };
@@ -115,6 +155,9 @@ int clamp(const int& val, const int& low, const int& high) {
 constexpr int Rage = 6;
 constexpr int SubLife = 5;
 
+/// <summary>
+/// 雷のシミュレーション
+/// </summary>
 void Thunder::Simulate()
 {
 	CCRandom& rand{ CCRandom::GetInstane() };

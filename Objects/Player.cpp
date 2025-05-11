@@ -1,4 +1,14 @@
+/**
+ * @file   Player.cpp
+ *
+ * @brief  プレイヤーオブジェクトのソースファイル
+ *
+ * @author CatCode
+ *
+ * @date   2025/05/11
+ */
 #include "Player.h"
+
 #include <DxLib.h>
 #include "../Common/Colors.h"
 #include "../WindowSettingItems.h"
@@ -16,6 +26,9 @@ static constexpr float MaxGravity{ -JumpPower * 2.f };
 static constexpr float AccGravity{ 0.35f };
 static constexpr float StoGravity{ MaxGravity };
 
+/// <summary>
+/// コンストラクタ
+/// </summary>
 Player::Player():
 	ObjectBace(Transform2D(Position2D(static_cast<float>(WSI::GetInstance().ScreenCenterX()), static_cast<float>(WSI::GetInstance().ScreenBottom() - 25)), 0.f)),
 	m_Collider(m_Transform.GetPosition(), Width, Hight),
@@ -31,8 +44,14 @@ Player::Player():
 {
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Player::~Player() = default;
 
+/// <summary>
+/// 初期化処理
+/// </summary>
 void Player::Initialize()
 {
 	WSI& wsi{ WSI::GetInstance() };
@@ -49,6 +68,9 @@ void Player::Initialize()
 	m_JumpSE = rm.RequestSound("JumpSE.wav");
 }
 
+/// <summary>
+/// 更新処理
+/// </summary>
 void Player::Update()
 {
 	Move();
@@ -58,6 +80,9 @@ void Player::Update()
 	m_Collider.SetPosition(m_Transform.GetPosition());
 }
 
+/// <summary>
+/// 描画処理
+/// </summary>
 void Player::Render(const Camera& camera)
 {
 	Collisions::Box box = m_Collider.GetBox();
@@ -66,10 +91,17 @@ void Player::Render(const Camera& camera)
 		Colors::White, true);
 }
 
+/// <summary>
+/// 終了処理
+/// </summary>
 void Player::Finalize()
 {
+	PlaySoundMem(ResourceManager::GetInstance().RequestSound("HaveDamageSE.wav"), DX_PLAYTYPE_BACK);
 }
 
+/// <summary>
+/// 移動操作処理
+/// </summary>
 void Player::Move()
 {
 	float StickL{ p_Pad.GetLeftThumbLXPercent() };
@@ -89,6 +121,9 @@ void Player::Move()
 		m_Transform.SetPositionX(m_MaxPosX);
 }
 
+/// <summary>
+/// ジャンプ操作処理
+/// </summary>
 void Player::Jump()
 {
 	if (m_CanJump && p_Pad.GetLeftThumbLY() > 0.f)
@@ -114,6 +149,9 @@ void Player::Jump()
 	}
 }
 
+/// <summary>
+/// コライダーの取得関数
+/// </summary>
 Collisions::BoxCollider& Player::GetCollider()
 {
 	return m_Collider;

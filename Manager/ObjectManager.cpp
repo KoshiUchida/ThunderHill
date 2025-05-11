@@ -67,16 +67,17 @@ void ObjectManager::Update()
 	for (auto& element : m_Objects)
 	{
 		element.second->Update();
+
 		if (element.second->isDestroy())
 		{
+			element.second->Finalize();
 			destroyName.push_back(element.first);
 		}
 	}
 
 	for (std::string& name : destroyName)
-	{
 		m_Objects.erase(name);
-	}
+
  	destroyName.clear();
 }
 

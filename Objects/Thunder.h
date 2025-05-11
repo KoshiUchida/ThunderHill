@@ -1,8 +1,21 @@
+/**
+ * @file   Thunder.h
+ *
+ * @brief  雷オブジェクトのヘッダーファイル
+ *
+ * @author CatCode
+ *
+ * @date   2025/05/11
+ */
 #pragma once
 #include "ObjectBace.h"
+
 #include <vector>
 #include "../Common/Collisions.h"
 
+/// <summary>
+/// 雷オブジェクトのクラス
+/// </summary>
 class Thunder final :
 	public ObjectBace
 {
@@ -21,6 +34,9 @@ private:
 
     // 電撃の発している部分
     Collisions::LinesCollider m_Line;
+
+    // 生成した雷の総数
+    static int s_Count;
 
 public:
 	Thunder(const Position2D& spownPosition);

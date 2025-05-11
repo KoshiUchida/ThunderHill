@@ -105,6 +105,7 @@
     </ClInclude>
     <ClInclude Include="Objects\FlyingDebris.h" />
     <ClInclude Include="Objects\FlyingDebrisGenerater.h" />
+    <ClInclude Include="Objects\TimeUp.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowSettingItems.cpp" />
@@ -189,6 +190,7 @@
     </ClCompile>
     <ClCompile Include="Objects\FlyingDebris.cpp" />
     <ClCompile Include="Objects\FlyingDebrisGenerater.cpp" />
+    <ClCompile Include="Objects\TimeUp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">
