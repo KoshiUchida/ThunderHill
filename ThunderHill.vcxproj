@@ -158,6 +158,7 @@
     <ClInclude Include="Objects\Thunder.h" />
     <ClInclude Include="Objects\TimeLimitUI.h" />
     <ClInclude Include="Objects\TimeUp.h" />
+    <ClInclude Include="Common\ScoreIO.h" />
     <ClInclude Include="WindowSettingItems.h" />
     <ClInclude Include="WinMain.h" />
   </ItemGroup>
@@ -191,6 +192,7 @@
     <ClCompile Include="Objects\Thunder.cpp" />
     <ClCompile Include="Objects\TimeLimitUI.cpp" />
     <ClCompile Include="Objects\TimeUp.cpp" />
+    <ClCompile Include="Common\ScoreIO.cpp" />
     <ClCompile Include="WindowSettingItems.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
