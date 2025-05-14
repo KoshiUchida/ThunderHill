@@ -5,13 +5,14 @@
  *
  * @author CatCode
  *
- * @date   2025/05/11
+ * @date   2025/05/14
  */
 #include "TimeLimitUI.h"
 
 #include "DxLib.h"
 #include <string>
 #include "../Common/Colors.h"
+#include "../Common/ScoreIO.h"
 
 #include "../Manager/SceneManager.h"
 #include "../Manager/ShareData.h"
@@ -57,17 +58,11 @@ void TimeLimitUI::Finalize()
 {
 	ShareData& p_sd{ ShareData::GetInstance() };
 
-	std::string data = p_sd.Get("High");
+	int data = LoadHighScore();
 
-	if (data.size())
-	{
-		int datar = std::stoi(data, nullptr);
+	if (data && data < m_LiveTime || !data)
+		SaveHighScore(m_LiveTime);
 
-		if (datar < m_LiveTime)
-			p_sd.Set("High", std::to_string(m_LiveTime));
-	}
-	else
-		p_sd.Set("High", std::to_string(m_LiveTime));
 
 	p_sd.Set("Score", std::to_string(m_LiveTime));
 

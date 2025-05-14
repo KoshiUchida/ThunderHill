@@ -5,12 +5,13 @@
  *
  * @author CatCode
  *
- * @date   2025/05/04
+ * @date   2025/05/14
  */
 #include "Result.h"
 
 #include <DxLib.h>
 #include "../Common/Colors.h"
+#include "../Common/ScoreIO.h"
 
 #include "../WindowSettingItems.h"
 #include "../Manager/ResourceManager.h"
@@ -64,12 +65,9 @@ void Result::Initialize()
 		m_Score = "Score : " + m_Score;
 	}
 
-	if (p_sd.HasKey("High"))
-	{
-		m_High = p_sd.Get("High");
-
-		m_High = "High score : " + m_High;
-	}
+	int data = LoadHighScore();
+	if (data)
+		m_High = "High score : " + std::to_string(data);
 
 	m_Bottom = false;
 }

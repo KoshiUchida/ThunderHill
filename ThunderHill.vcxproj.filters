@@ -112,6 +112,7 @@
     <ClInclude Include="Objects\FlyingDebrisGenerater.h">
       <Filter>Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Common\ScoreIO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowSettingItems.cpp" />
@@ -203,6 +204,7 @@
     <ClCompile Include="Objects\FlyingDebrisGenerater.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Common\ScoreIO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico">
